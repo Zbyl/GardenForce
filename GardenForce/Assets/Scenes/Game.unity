@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8504bacd6e7c57778b65957a9ba7cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 519420032}
+  camera: {fileID: 519420031}
   dirtPrefab: {fileID: 4026654398806174209, guid: e0802e9ae0df9411e989ff12486ae83e,
     type: 3}
   attackFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,

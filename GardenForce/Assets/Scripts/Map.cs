@@ -6,7 +6,7 @@ public class Map : MonoBehaviour
 {
     public static Map instance { get; private set; }
 
-    public Transform cameraPosition;
+    public Camera camera;
 
     public GameObject dirtPrefab;
 
@@ -20,10 +20,10 @@ public class Map : MonoBehaviour
     public Flower[,] flowers { get; private set; }
     public GameObject[,] ground { get; private set; }
 
-    public float tileSize { get; private set; }
 
-    public readonly int verticalSize = 10;
-    public readonly int horizontalSize = 10;
+    public readonly int width = 80;
+    public readonly int height = 45;
+    public float tileSize { get; private set; }
     public readonly float tileZ = 0;
     public readonly float flowerZ = -1;
     public readonly float cursorZ = -2;
@@ -37,19 +37,19 @@ public class Map : MonoBehaviour
 
     public void GenerateGround()
     {
-        ground = new GameObject[verticalSize, horizontalSize];
+        ground = new GameObject[width, height];
 
         GameObject tileParent = new GameObject();
         tileParent.name = "TileParent";
-        for (var i = 0; i < horizontalSize; i++)
+        for (var i = 0; i < width; i++)
         {
-            for (var j = 0; j < verticalSize; j++)
+            for (var j = 0; j < height; j++)
             {
-                Vector3 pos = mapPositionToWorldPosition(new Vector2Int(j, i), tileZ);
-                ground[j, i] = Instantiate(
+                Vector3 pos = mapPositionToWorldPosition(new Vector2Int(i, j), tileZ);
+                ground[i, j] = Instantiate(
                     dirtPrefab, pos, Quaternion.identity
                 );
-                ground[j, i].transform.SetParent(tileParent.transform);
+                ground[i, j].transform.SetParent(tileParent.transform);
             }
         }
     }
@@ -60,12 +60,17 @@ public class Map : MonoBehaviour
         tileSize = dirtPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
 
         var topLeft = mapPositionToWorldPosition(new Vector2Int(0, 0), tileZ);
-        var bottomRight = mapPositionToWorldPosition(new Vector2Int(horizontalSize, verticalSize), tileZ);
+        var bottomRight = mapPositionToWorldPosition(new Vector2Int(width, height), tileZ);
         var mapCenter = (topLeft + bottomRight) / 2;
-        mapCenter.z = cameraPosition.position.z;
-        cameraPosition.position = mapCenter;
+        mapCenter.z = camera.transform.position.z;
+        camera.transform.position = mapCenter;
 
-        flowers = new Flower[verticalSize, horizontalSize];
+        float aspectScreen = Screen.width / Screen.height;
+        float aspectMap = width / height;
+
+        camera.orthographicSize = width / 5.0f;
+
+        flowers = new Flower[width, height];
         GenerateGround();
         StartCoroutine("Tick");
     }
@@ -75,7 +80,7 @@ public class Map : MonoBehaviour
         for (; ; )
         {
             logicUpdate();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -101,7 +106,7 @@ public class Map : MonoBehaviour
     public Vector2Int getStartPosition(int owner)
     {
         if (owner == 2)
-            return new Vector2Int(horizontalSize - 1, verticalSize - 1);
+            return new Vector2Int(width - 1, height - 1);
         return Vector2Int.zero;
     }
 
@@ -190,8 +195,8 @@ public class Map : MonoBehaviour
     {
         if (position.x < 0) return false;
         if (position.y < 0) return false;
-        if (position.x >= horizontalSize) return false;
-        if (position.y >= verticalSize) return false;
+        if (position.x >= width) return false;
+        if (position.y >= height) return false;
         return true;
     }
 
