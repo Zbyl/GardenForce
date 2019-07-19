@@ -17,7 +17,8 @@ public class Flower : MonoBehaviour
 
     public int owner; // 1 lub 2
     public Vector2Int position;
-    public int creationTIme;
+    public int creationTime;
+    public bool self_destruct;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class Flower : MonoBehaviour
         Debug.Log("Flower!");
     }
 
-    public void init(Flower previousFlower)
+    public virtual void init(Flower previousFlower)
     {
     }
 

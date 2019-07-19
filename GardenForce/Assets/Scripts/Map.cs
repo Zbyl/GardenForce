@@ -20,8 +20,8 @@ public class Map : MonoBehaviour
 
     public float tileSize { get; private set; }
 
-    readonly int verticalSize = 10;
-    readonly int horizontalSize = 10;
+    public readonly int verticalSize = 10;
+    public readonly int horizontalSize = 10;
     public readonly float tileZ = 0;
     public readonly float flowerZ = -1;
     public readonly float cursorZ = -2;
@@ -84,7 +84,7 @@ public class Map : MonoBehaviour
         currentTime++;
         foreach (var flower in flowers)
         {
-                flower?.GetComponent<Flower>().logicUpdate(currentTime);
+            flower?.GetComponent<Flower>().logicUpdate(currentTime);
         }
     }
 
@@ -121,7 +121,7 @@ public class Map : MonoBehaviour
         var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;
         newFlower.position = position;
-        newFlower.creationTIme = currentTime;
+        newFlower.creationTime = currentTime;
         newFlower.init(previousFlower);
         flowers[position.x, position.y] = newFlower;
 
