@@ -15,16 +15,21 @@ public class Flower : MonoBehaviour
 
     public FlowerType type;
 
+    public int owner; // 1 lub 2
+    public Vector2Int position;
+    public int creationTIme;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Dupa");
-        
+        Debug.Log("Flower!");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void init(Flower previousFlower)
     {
-        
+    }
+
+    public virtual void logicUpdate(int currentTime)
+    {
     }
 }

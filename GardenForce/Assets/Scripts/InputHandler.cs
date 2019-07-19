@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public Transform mapOrigin;
     public float tileSize;
 
     public int playerNumber;
@@ -18,7 +17,7 @@ public class InputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -51,6 +50,8 @@ public class InputHandler : MonoBehaviour
         {
             Debug.Log("Planting A" + playerNumber);
             particleBurst.Play();
+
+            Map.instance.plantFlower(mapPosition, Map.instance.attackFlowerPrefab, playerNumber);
         }
 
         if (getButton("PlantB"))
@@ -71,7 +72,7 @@ public class InputHandler : MonoBehaviour
             particleBurst.Play();
         }
 
-        this.transform.position = mapPositionToWorldPosition(this.mapPosition);
+        this.transform.position = Map.instance.mapPositionToWorldPosition(this.mapPosition);
     }
 
     /// Returns if button was pressed. Handles input delay.
@@ -112,27 +113,5 @@ public class InputHandler : MonoBehaviour
         if ((button == "Down") && (Input.GetAxisRaw("AxisY" + playerNumber) > 0.9)) return true;
 
         return false;
-    }
-
-    Vector3 mapPositionToWorldPosition(Vector2 position)
-    {
-        return this.mapOrigin.position + Vector3.right * tileSize * position.x + Vector3.down * tileSize * position.y;
-    }
-
-    Vector3 mapPositionToWorldPosition(Vector2Int position)
-    {
-        return mapPositionToWorldPosition(new Vector2(position.x, position.y));
-    }
-
-    Vector2 worldPositionToMapPosition(Vector3 position)
-    {
-        var dir = position - this.mapOrigin.position;
-        return new Vector2(dir.x / tileSize, dir.y / tileSize);
-    }
-
-    Vector2Int worldPositionToIntMapPosition(Vector3 position)
-    {
-        var pos = worldPositionToMapPosition(position);
-        return new Vector2Int((int)pos.x, (int)pos.y);
     }
 }
