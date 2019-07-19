@@ -352,6 +352,8 @@ MonoBehaviour:
     type: 3}
   growFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
     type: 3}
+  fadeOutPrefab: {fileID: 6128730739379415462, guid: b73770e18472b7b40877f3758ca8b1f0,
+    type: 3}
 --- !u!4 &1890200032
 Transform:
   m_ObjectHideFlags: 0
