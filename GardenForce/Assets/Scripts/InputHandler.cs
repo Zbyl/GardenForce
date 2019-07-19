@@ -10,6 +10,10 @@ public class InputHandler : MonoBehaviour
     public int playerNumber;
     public Vector2Int mapPosition;
 
+    public float inputDelay;    ///< Delay between presses of one button.
+
+    private Dictionary<string, float> lastPressed = new Dictionary<string, float>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,37 +24,88 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.mousePosition);
-        Debug.Log(Input.GetAxisRaw("DPadX1"));
+        Debug.Log("X=" + Input.GetAxisRaw("AxisX" + playerNumber) + " Y=" + Input.GetAxisRaw("AxisY" + playerNumber));
 
-        if (Input.GetButton("Left" + playerNumber) || getDPadButton("Left", playerNumber))
+        if (getButton("Left"))
         {
             this.mapPosition.x -= 1;
         }
 
-        if (Input.GetButton("Right" + playerNumber) || getDPadButton("Right", playerNumber))
+        if (getButton("Right"))
         {
             this.mapPosition.x += 1;
         }
 
-        if (Input.GetButton("Up" + playerNumber) || getDPadButton("Up", playerNumber))
+        if (getButton("Up"))
         {
             this.mapPosition.y -= 1;
         }
 
-        if (Input.GetButton("Down" + playerNumber) || getDPadButton("Down", playerNumber))
+        if (getButton("Down"))
         {
             this.mapPosition.y += 1;
+        }
+
+        if (getButton("PlantA"))
+        {
+            Debug.Log("Planting A");
+        }
+
+        if (getButton("PlantB"))
+        {
+            Debug.Log("Planting B");
+        }
+
+        if (getButton("PlantC"))
+        {
+            Debug.Log("Planting C");
+        }
+
+        if (getButton("PlantD"))
+        {
+            Debug.Log("Planting D");
         }
 
         this.transform.position = mapPositionToWorldPosition(this.mapPosition);
     }
 
-    static bool getDPadButton(string button, int playerNumber)
+    /// Returns if button was pressed. Handles input delay.
+    bool getButton(string button)
     {
-        if (button == "Right") return Input.GetAxisRaw("DPadX" + playerNumber) == 1;
-        if (button == "Down") return Input.GetAxisRaw("DPadY" + playerNumber) == -1;
-        if (button == "Left") return Input.GetAxisRaw("DPadX" + playerNumber) == -1;
-        if (button == "Up") return Input.GetAxisRaw("DPadY" + playerNumber) == 1;
+        var buttonName = button + playerNumber;
+        if (!this.lastPressed.ContainsKey(buttonName))
+        {
+            this.lastPressed.Add(buttonName, 0);
+        }
+
+        var lastTime = this.lastPressed[buttonName];
+        if (Time.time < lastTime + this.inputDelay)
+            return false;
+
+        if (!getButtonRaw(button, playerNumber))
+            return false;
+
+        this.lastPressed[buttonName] = Time.time;
+        return true;
+    }
+
+    /// Returns if button was pressed.
+    static bool getButtonRaw(string button, int playerNumber)
+    {
+        var buttonName = button + playerNumber;
+        if (Input.GetButton(buttonName))
+            return true;
+
+        if ((button == "Left") && (Input.GetAxisRaw("DPadX" + playerNumber) == -1)) return true;
+        if ((button == "Right") && (Input.GetAxisRaw("DPadX" + playerNumber) == 1)) return true;
+        if ((button == "Up") && (Input.GetAxisRaw("DPadY" + playerNumber) == 1)) return true;
+        if ((button == "Down") && (Input.GetAxisRaw("DPadY" + playerNumber) == -1)) return true;
+
+        if ((button == "Left") && (Input.GetAxisRaw("AxisX" + playerNumber) < -0.9)) return true;
+        if ((button == "Right") && (Input.GetAxisRaw("AxisX" + playerNumber) > 0.9)) return true;
+        if ((button == "Up") && (Input.GetAxisRaw("AxisY" + playerNumber) < -0.9)) return true;
+        if ((button == "Down") && (Input.GetAxisRaw("AxisY" + playerNumber) > 0.9)) return true;
+
         return false;
     }
 

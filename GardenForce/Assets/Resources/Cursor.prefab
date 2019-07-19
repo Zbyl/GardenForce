@@ -48,6 +48,7 @@ MonoBehaviour:
   tileSize: 0.66
   playerNumber: 1
   mapPosition: {x: 0, y: 0}
+  inputDelay: 0.1
 --- !u!1 &2880946579235719669
 GameObject:
   m_ObjectHideFlags: 0
