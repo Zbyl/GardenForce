@@ -133,6 +133,15 @@ public class Map : MonoBehaviour
         return newFlower;
     }
 
+    public bool isPositionInsideMap(Vector2Int position)
+    {
+        if (position.x < 0) return false;
+        if (position.y < 0) return false;
+        if (position.x >= horizontalSize) return false;
+        if (position.y >= verticalSize) return false;
+        return true;
+    }
+
     public Vector3 mapPositionToWorldPosition(Vector2 position, float z)
     {
         return this.transform.position + Vector3.right * tileSize * position.x + Vector3.down * tileSize * position.y + Vector3.forward * z;

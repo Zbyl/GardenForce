@@ -10,12 +10,14 @@ public class CursorHandler : MonoBehaviour
     public float inputDelay;                ///< Delay between presses of one button.
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
 
+    private Map map;
+
     private Dictionary<string, float> lastPressed = new Dictionary<string, float>();
 
     // Start is called before the first frame update
     void Start()
     {
-
+        map = Map.instance;
     }
 
     // Update is called once per frame
@@ -26,51 +28,64 @@ public class CursorHandler : MonoBehaviour
 
         if (getButton("Left"))
         {
-            this.mapPosition.x -= 1;
+            moveCursor(-1, 0);
         }
 
         if (getButton("Right"))
         {
-            this.mapPosition.x += 1;
+            moveCursor(1, 0);
         }
 
         if (getButton("Up"))
         {
-            this.mapPosition.y -= 1;
+            moveCursor(0, -1);
         }
 
         if (getButton("Down"))
         {
-            this.mapPosition.y += 1;
+            moveCursor(0, 1);
         }
 
         if (getButton("PlantA"))
         {
-            Debug.Log("Planting A" + playerNumber);
-            particleBurst.Play();
-
-            Map.instance.plantFlower(mapPosition, Map.instance.attackFlowerPrefab, playerNumber);
+            plantFlower(map.attackFlowerPrefab);
         }
 
         if (getButton("PlantB"))
         {
-            Debug.Log("Planting B" + playerNumber);
-            particleBurst.Play();
+            plantFlower(map.defenseFlowerPrefab);
         }
 
         if (getButton("PlantC"))
         {
-            Debug.Log("Planting C" + playerNumber);
-            particleBurst.Play();
+            plantFlower(map.colonizeFlowerPrefab);
         }
 
         if (getButton("PlantD"))
         {
-            Debug.Log("Planting D" + playerNumber);
-            particleBurst.Play();
+            plantFlower(map.growFlowerPrefab);
         }
 
-        this.transform.position = Map.instance.mapPositionToWorldPosition(this.mapPosition, Map.instance.cursorZ);
+        this.transform.position = map.mapPositionToWorldPosition(this.mapPosition, map.cursorZ);
+    }
+
+    void plantFlower(GameObject flowerPrefab)
+    {
+        var flower = map.plantFlower(mapPosition, flowerPrefab, playerNumber);
+        if (flower != null)
+        {
+            Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
+            particleBurst.Play();
+        }
+    }
+
+    bool moveCursor(int deltaX, int deltaY)
+    {
+        var newPosition = mapPosition + new Vector2Int(deltaX, deltaY);
+        if (!map.isPositionInsideMap(newPosition))
+            return false;
+        mapPosition = newPosition;
+        return true;
     }
 
     /// Returns if button was pressed. Handles input delay.
