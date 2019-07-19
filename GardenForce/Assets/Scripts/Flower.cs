@@ -43,6 +43,11 @@ public class Flower : MonoBehaviour
         fadeOutPrevious();
     }
 
+    void OnDisable()
+    {
+        Destroy(stolenModel);
+    }
+
     public void setSourcePosition(Vector2Int position)
     {
         sourcePosition = position;
