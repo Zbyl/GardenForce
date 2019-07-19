@@ -28,7 +28,8 @@ public class AttackFlower : Flower
                 for (int j = 0; j < spawn_map.GetLength(1); j++)
                 {
                     if (spawn_map[i,j] == stage)
-                        TryToSpawn(new Vector2Int(i - 2, j - 2));
+                        TryToSpawn(new Vector2Int(i - spawn_map.GetLength(0) / 2,
+                            j - spawn_map.GetLength(1) / 2));
                 }
             }
         }
@@ -43,7 +44,7 @@ public class AttackFlower : Flower
     void TryToSpawn(Vector2Int offset)
     {
         var position = this.position + offset;
-        var childFlower = Map.instance.instantiateFlower(position, Map.instance.attackFlowerPrefab, owner) as AttackFlower;
+        var childFlower = Map.instance.instantiateFlower(position, Map.instance.attackFlowerPrefab, owner, true) as AttackFlower;
         if (childFlower != null)
         {
             childFlower.canSpawn = false;

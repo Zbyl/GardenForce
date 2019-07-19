@@ -152,10 +152,10 @@ public class Map : MonoBehaviour
         Destroy(flower.gameObject);
     }
 
-    public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner)
+    public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner, bool force = false)
     {
         var flower = getFlower(position);
-        if (flower != null)
+        if (!force && flower != null)
             return null;
 
         return instantiateFlowerRaw(position, flowerPrefab, owner);
