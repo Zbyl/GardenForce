@@ -88,7 +88,7 @@ public class CursorHandler : MonoBehaviour
         var flower = map.plantFlower(mapPosition, flowerPrefab, playerNumber);
         if (flower != null)
         {
-            Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
+            //Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
             particleBurst.Play();
         }
     }

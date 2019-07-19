@@ -84,7 +84,7 @@ MonoBehaviour:
   sourcePosition: {x: 0, y: 0}
   travelSpeed: 3
   createFadeInSeconds: 1
-  destroyFadeOutSeconds: 1
+  destroyFadeOutSeconds: 0.3
   previousFadeOutSeconds: 1
   canSpawn: 1
   colonizationStart: 2

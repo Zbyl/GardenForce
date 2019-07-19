@@ -21,8 +21,8 @@ public class Map : MonoBehaviour
     public GameObject[,] ground { get; private set; }
 
 
-    public readonly int width = 80;
-    public readonly int height = 45;
+    public readonly int width = 40;
+    public readonly int height = 20;
     public float tileSize { get; private set; }
     public readonly float tileZ = 0;
     public readonly float flowerZ = -1;
@@ -143,7 +143,7 @@ public class Map : MonoBehaviour
 
         if (flower.destroyFadeOutSeconds > 0)
         {
-            var fadeOut = Instantiate(fadeOutPrefab, flower.transform);
+            var fadeOut = Instantiate(fadeOutPrefab, flower.transform.position, flower.transform.rotation);
             var model = flower.transform.Find("Model");
             model.SetParent(fadeOut.transform);
             fadeOut.GetComponent<FadeOut>().fadeOutSeconds = flower.destroyFadeOutSeconds;
