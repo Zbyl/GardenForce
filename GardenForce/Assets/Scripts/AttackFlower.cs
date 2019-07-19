@@ -44,6 +44,10 @@ public class AttackFlower : Flower
         }
 
         last_stage = stage;
+        if (stage == life_ticks)
+        {
+            Map.instance.removeFlower(this.position);
+        }
     }
 
     void TryToSpawn(Vector2Int offset)

@@ -126,6 +126,12 @@ public class Map : MonoBehaviour
         return instantiateFlower(position, flowerPrefab, owner);
     }
 
+    public void removeFlower(Vector2Int position)
+    {
+        Destroy(flowers[position.x, position.y].gameObject);
+        flowers[position.x, position.y] = null;
+    }
+
     public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner)
     {
         var flower = getFlower(position);
