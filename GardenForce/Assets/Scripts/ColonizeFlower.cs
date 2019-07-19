@@ -4,7 +4,6 @@ using UnityEditor;
 public class ColonizeFlower : Flower
 {
     public bool canSpawn = true;
-    Vector2Int sourcePosition;      /// If this is a sprout this is parent's position.
 
     public int colonizationStart;   /// First sprout is generated in this tick.
     public int colonizationDelay;   /// Delay between generating sprouts.
@@ -14,8 +13,6 @@ public class ColonizeFlower : Flower
 
     private int colonizationRetryCount = 15;   /// How many times to try to find a place for a sprout before giving up.
 
-    public float travelSpeed;        /// How fast does a sprout travel. In tiles per second.
-
     public override void init(Flower previousFlower)
     {
         if (previousFlower != null)
@@ -23,31 +20,6 @@ public class ColonizeFlower : Flower
             var model = previousFlower.transform.Find("Model");
             model.name = "StolenModel";
             model.SetParent(transform);
-        }
-    }
-
-    void Update()
-    {
-        if (canSpawn)
-            return;
-
-        /// Logic for a sprout.
-        var travelFraction = 1.0f;
-        if (position != sourcePosition)
-        {
-            travelFraction = (Time.time - creationTimeInSeconds) * travelSpeed / (position - sourcePosition).magnitude;
-        }
-
-        var sourcePos = Map.instance.mapPositionToWorldPosition(sourcePosition, Map.instance.flowerZ);
-        var destPos = Map.instance.mapPositionToWorldPosition(position, Map.instance.flowerZ);
-        if (travelFraction < 1.0f)
-        {
-            travelFraction = Mathf.Sqrt(travelFraction);
-            transform.position = sourcePos * (1 - travelFraction) + destPos * travelFraction;
-        }
-        else
-        {
-            transform.position = destPos;
         }
     }
 
@@ -116,8 +88,7 @@ public class ColonizeFlower : Flower
             return false;
 
         childFlower.canSpawn = false;
-        childFlower.sourcePosition = this.position;
-        childFlower.transform.position = transform.position;
+        childFlower.setSourcePosition(this.position);
         return true;
     }
 }

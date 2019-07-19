@@ -15,6 +15,8 @@ public class Map : MonoBehaviour
     public GameObject colonizeFlowerPrefab;
     public GameObject growFlowerPrefab;
 
+    public GameObject fadeOutPrefab;
+
     public Flower[,] flowers { get; private set; }
     public GameObject[,] ground { get; private set; }
 
@@ -128,8 +130,21 @@ public class Map : MonoBehaviour
 
     public void removeFlower(Vector2Int position)
     {
-        Destroy(flowers[position.x, position.y].gameObject);
+        var flower = getFlower(position);
+        if (flower == null)
+            return;
+
         flowers[position.x, position.y] = null;
+
+        if (flower.destroyFadeOutSeconds > 0)
+        {
+            var fadeOut = Instantiate(fadeOutPrefab, flower.transform);
+            var model = flower.transform.Find("Model");
+            model.SetParent(fadeOut.transform);
+            fadeOut.GetComponent<FadeOut>().fadeOutSeconds = flower.destroyFadeOutSeconds;
+        }
+
+        Destroy(flower.gameObject);
     }
 
     public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner)
@@ -157,6 +172,7 @@ public class Map : MonoBehaviour
         var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;
         newFlower.position = position;
+        newFlower.sourcePosition = position;
         newFlower.creationTime = currentTime;
         newFlower.creationTimeInSeconds = Time.time;
         newFlower.init(previousFlower);

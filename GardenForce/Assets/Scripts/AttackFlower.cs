@@ -57,6 +57,7 @@ public class AttackFlower : Flower
         if (childFlower != null)
         {
             childFlower.canSpawn = false;
+            childFlower.setSourcePosition(this.position);
         }
     }
 }

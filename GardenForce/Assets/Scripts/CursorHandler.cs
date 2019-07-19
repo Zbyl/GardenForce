@@ -13,14 +13,13 @@ public class CursorHandler : MonoBehaviour
     public GameObject normalCursor;
     public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
 
-    private Map map;
+    private Map map { get { return Map.instance; } }
 
     private Dictionary<string, float> lastPressed = new Dictionary<string, float>();
 
     // Start is called before the first frame update
     void Start()
     {
-        map = Map.instance;
         mapPosition = map.getStartPosition(playerNumber);
     }
 

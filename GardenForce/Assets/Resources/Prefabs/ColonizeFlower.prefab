@@ -81,13 +81,17 @@ MonoBehaviour:
   creationTime: 0
   creationTimeInSeconds: 0
   self_destruct: 0
+  sourcePosition: {x: 0, y: 0}
+  travelSpeed: 3
+  createFadeInSeconds: 1
+  destroyFadeOutSeconds: 1
+  previousFadeOutSeconds: 1
   canSpawn: 1
   colonizationStart: 2
   colonizationDelay: 1
   colonizationMinRadius: 2
   colonizationMaxRadius: 5
   colonizationCount: 4
-  travelSpeed: 3
 --- !u!1 &9168401533678623049
 GameObject:
   m_ObjectHideFlags: 0
