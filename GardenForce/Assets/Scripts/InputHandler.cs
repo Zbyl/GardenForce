@@ -10,7 +10,8 @@ public class InputHandler : MonoBehaviour
     public int playerNumber;
     public Vector2Int mapPosition;
 
-    public float inputDelay;    ///< Delay between presses of one button.
+    public float inputDelay;                ///< Delay between presses of one button.
+    public ParticleSystem particleBurst;    ///< Played when plant is being planted.
 
     private Dictionary<string, float> lastPressed = new Dictionary<string, float>();
 
@@ -24,7 +25,7 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.mousePosition);
-        Debug.Log("X=" + Input.GetAxisRaw("AxisX" + playerNumber) + " Y=" + Input.GetAxisRaw("AxisY" + playerNumber));
+        //Debug.Log("X=" + Input.GetAxisRaw("AxisX" + playerNumber) + " Y=" + Input.GetAxisRaw("AxisY" + playerNumber));
 
         if (getButton("Left"))
         {
@@ -48,22 +49,26 @@ public class InputHandler : MonoBehaviour
 
         if (getButton("PlantA"))
         {
-            Debug.Log("Planting A");
+            Debug.Log("Planting A" + playerNumber);
+            particleBurst.Play();
         }
 
         if (getButton("PlantB"))
         {
-            Debug.Log("Planting B");
+            Debug.Log("Planting B" + playerNumber);
+            particleBurst.Play();
         }
 
         if (getButton("PlantC"))
         {
-            Debug.Log("Planting C");
+            Debug.Log("Planting C" + playerNumber);
+            particleBurst.Play();
         }
 
         if (getButton("PlantD"))
         {
-            Debug.Log("Planting D");
+            Debug.Log("Planting D" + playerNumber);
+            particleBurst.Play();
         }
 
         this.transform.position = mapPositionToWorldPosition(this.mapPosition);
