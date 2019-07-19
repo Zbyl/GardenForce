@@ -82,7 +82,7 @@ public class Map : MonoBehaviour
         currentTime++;
         foreach (var flower in flowers)
         {
-                flower?.GetComponent<Flower>().logicUpdate(currentTime);
+            flower?.GetComponent<Flower>().logicUpdate(currentTime);
         }
     }
 
@@ -151,7 +151,7 @@ public class Map : MonoBehaviour
         var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;
         newFlower.position = position;
-        newFlower.creationTIme = currentTime;
+        newFlower.creationTime = currentTime;
         newFlower.init(previousFlower);
         flowers[position.x, position.y] = newFlower;
 
