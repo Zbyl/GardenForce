@@ -5,16 +5,6 @@ public class AttackFlower : Flower
 {
     public bool canSpawn = true;
 
-    public override void init(Flower previousFlower)
-    {
-        if (previousFlower != null)
-        {
-            var model = previousFlower.transform.Find("Model");
-            model.name = "StolenModel";
-            model.SetParent(transform);
-        }
-    }
-
     readonly int[,] spawn_map = new int[,] {
         { 0, 4, 3, 4, 0 },
         { 4, 2, 1, 2, 4 },

@@ -38,6 +38,7 @@ public class Flower : MonoBehaviour
     {
         travelToPosition();
         fadeIn();
+        fadeOutPrevious();
     }
 
     public void setSourcePosition(Vector2Int position)
@@ -93,8 +94,47 @@ public class Flower : MonoBehaviour
         }
     }
 
+    /// Logic for fade out of previous flower.
+    void fadeOutPrevious()
+    {
+        if (previousFadeOutSeconds <= 0)
+            return;
+
+        var model = this.transform.Find("StolenModel");
+        if (model == null)
+            return;
+
+        var fadeFraction = (Time.time - creationTimeInSeconds) / previousFadeOutSeconds;
+        if (fadeFraction > 1.0f)
+        {
+            fadeFraction = 1.0f;
+        }
+        else
+        {
+            fadeFraction = Mathf.Sqrt(fadeFraction);
+        }
+
+        foreach (var child in model.GetComponentsInChildren<SpriteRenderer>())
+        {
+            var color = child.color;
+            color.a = Mathf.Min(color.a, fadeFraction);
+            child.color = color;
+        }
+
+        if (fadeFraction >= 1.0f)
+        {
+            Destroy(model);
+        }
+    }
+
     public virtual void init(Flower previousFlower)
     {
+        if ((previousFlower != null) && (previousFadeOutSeconds > 0))
+        {
+            var model = previousFlower.transform.Find("Model");
+            model.name = "StolenModel";
+            model.SetParent(transform);
+        }
     }
 
     public virtual void logicUpdate(int currentTime)

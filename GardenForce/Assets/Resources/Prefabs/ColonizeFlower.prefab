@@ -85,7 +85,7 @@ MonoBehaviour:
   travelSpeed: 3
   createFadeInSeconds: 1
   destroyFadeOutSeconds: 0.3
-  previousFadeOutSeconds: 1
+  previousFadeOutSeconds: 0.3
   canSpawn: 1
   colonizationStart: 2
   colonizationDelay: 1

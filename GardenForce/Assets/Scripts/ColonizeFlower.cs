@@ -13,16 +13,6 @@ public class ColonizeFlower : Flower
 
     private int colonizationRetryCount = 15;   /// How many times to try to find a place for a sprout before giving up.
 
-    public override void init(Flower previousFlower)
-    {
-        if (previousFlower != null)
-        {
-            var model = previousFlower.transform.Find("Model");
-            model.name = "StolenModel";
-            model.SetParent(transform);
-        }
-    }
-
     public override void logicUpdate(int currentTime)
     {
         if (!canSpawn)
