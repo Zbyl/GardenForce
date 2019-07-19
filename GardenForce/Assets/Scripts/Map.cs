@@ -128,7 +128,7 @@ public class Map : MonoBehaviour
 
     public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner)
     {
-        var flower = flowers[position.x, position.y];
+        var flower = getFlower(position);
         if (flower != null)
             return null;
 
@@ -152,6 +152,7 @@ public class Map : MonoBehaviour
         newFlower.owner = owner;
         newFlower.position = position;
         newFlower.creationTime = currentTime;
+        newFlower.creationTimeInSeconds = Time.time;
         newFlower.init(previousFlower);
         flowers[position.x, position.y] = newFlower;
 

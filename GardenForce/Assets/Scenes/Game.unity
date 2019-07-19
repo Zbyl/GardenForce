@@ -348,7 +348,7 @@ MonoBehaviour:
     type: 3}
   defenseFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
     type: 3}
-  colonizeFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
+  colonizeFlowerPrefab: {fileID: 7884262249713015480, guid: 5fc7663b9ef82ff4eb1b0d8c01f6a9a1,
     type: 3}
   growFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
     type: 3}

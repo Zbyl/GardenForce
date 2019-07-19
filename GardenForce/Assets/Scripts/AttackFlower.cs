@@ -49,13 +49,10 @@ public class AttackFlower : Flower
     void TryToSpawn(Vector2Int offset)
     {
         var position = this.position + offset;
-        if (Map.instance.isPositionInsideMap(position))
+        var childFlower = Map.instance.instantiateFlower(position, Map.instance.attackFlowerPrefab, owner) as AttackFlower;
+        if (childFlower != null)
         {
-            var childFlower = Map.instance.instantiateFlower(position, Map.instance.attackFlowerPrefab, owner) as AttackFlower;
-            if (childFlower != null)
-            {
-                childFlower.canSpawn = false;
-            }
+            childFlower.canSpawn = false;
         }
     }
 }

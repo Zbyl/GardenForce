@@ -17,7 +17,8 @@ public class Flower : MonoBehaviour
 
     public int owner; // 1 lub 2
     public Vector2Int position;
-    public int creationTime;
+    public int creationTime;                /// Creation time in game ticks.
+    public float creationTimeInSeconds;       /// Creation time in seconds - used for animations and such. Not for logic.
     public bool self_destruct;
 
     // Start is called before the first frame update
