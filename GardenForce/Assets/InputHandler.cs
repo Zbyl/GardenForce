@@ -20,28 +20,38 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.mousePosition);
+        Debug.Log(Input.GetAxisRaw("DPadX1"));
 
-        if (Input.GetButtonDown("Left" + playerNumber))
+        if (Input.GetButton("Left" + playerNumber) || getDPadButton("Left", playerNumber))
         {
             this.mapPosition.x -= 1;
         }
 
-        if (Input.GetButtonDown("Right" + playerNumber))
+        if (Input.GetButton("Right" + playerNumber) || getDPadButton("Right", playerNumber))
         {
             this.mapPosition.x += 1;
         }
 
-        if (Input.GetButtonDown("Up" + playerNumber))
+        if (Input.GetButton("Up" + playerNumber) || getDPadButton("Up", playerNumber))
         {
             this.mapPosition.y -= 1;
         }
 
-        if (Input.GetButtonDown("Down" + playerNumber))
+        if (Input.GetButton("Down" + playerNumber) || getDPadButton("Down", playerNumber))
         {
             this.mapPosition.y += 1;
         }
 
         this.transform.position = mapPositionToWorldPosition(this.mapPosition);
+    }
+
+    static bool getDPadButton(string button, int playerNumber)
+    {
+        if (button == "Right") return Input.GetAxisRaw("DPadX" + playerNumber) == 1;
+        if (button == "Down") return Input.GetAxisRaw("DPadY" + playerNumber) == -1;
+        if (button == "Left") return Input.GetAxisRaw("DPadX" + playerNumber) == -1;
+        if (button == "Up") return Input.GetAxisRaw("DPadY" + playerNumber) == 1;
+        return false;
     }
 
     Vector3 mapPositionToWorldPosition(Vector2 position)
