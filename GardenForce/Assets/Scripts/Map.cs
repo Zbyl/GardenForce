@@ -172,7 +172,7 @@ public class Map : MonoBehaviour
         var newFlowerObject = Instantiate(flowerPrefab, worldPosition, Quaternion.identity);
         newFlowerObject.transform.SetParent(transform);
 
-        var previousFlower = flowers[position.x, position.y];
+        var previousFlower = getFlower(position);
 
         var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;

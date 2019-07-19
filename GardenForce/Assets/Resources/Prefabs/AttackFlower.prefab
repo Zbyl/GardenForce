@@ -85,8 +85,9 @@ MonoBehaviour:
   travelSpeed: 3
   createFadeInSeconds: 1
   destroyFadeOutSeconds: 0.3
-  previousFadeOutSeconds: 0.3
+  previousFadeOutSeconds: 1
   canSpawn: 1
+  life_ticks: 5
 --- !u!1 &9168401533678623049
 GameObject:
   m_ObjectHideFlags: 0

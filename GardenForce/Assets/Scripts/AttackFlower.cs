@@ -6,14 +6,14 @@ public class AttackFlower : Flower
     public bool canSpawn = true;
 
     readonly int[,] spawn_map = new int[,] {
-        { 0, 4, 3, 4, 0 },
-        { 4, 2, 1, 2, 4 },
-        { 3, 1, 0, 1, 3 },
-        { 4, 2, 1, 2, 4 },
-        { 0, 4, 3, 4, 0 },
+        { 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0 },
+        { 0, 0, 1, 0, 0 },
+        { 0, 0, 0, 0, 0 },
     };
 
-    const int life_ticks = 5;
+    public int life_ticks;  /// How long an attack flower lives (in game ticks).
 
 
     int last_stage = 0;

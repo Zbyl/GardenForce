@@ -27,6 +27,8 @@ public class Flower : MonoBehaviour
     public float destroyFadeOutSeconds;    /// Duration of fade out during destruction.
     public float previousFadeOutSeconds;   /// Duration of fade out of previous flower.
 
+    private Transform stolenModel;         /// Model of the previous flower - will be faded out.
+
     private Map map { get { return Map.instance; } }
 
     // Start is called before the first frame update
@@ -97,12 +99,15 @@ public class Flower : MonoBehaviour
     /// Logic for fade out of previous flower.
     void fadeOutPrevious()
     {
-        if (previousFadeOutSeconds <= 0)
+        if (stolenModel == null)
             return;
 
-        var model = this.transform.Find("StolenModel");
-        if (model == null)
+        if (previousFadeOutSeconds <= 0)
+        {
+            Destroy(stolenModel.gameObject);
+            stolenModel = null;
             return;
+        }
 
         var fadeFraction = (Time.time - creationTimeInSeconds) / previousFadeOutSeconds;
         if (fadeFraction > 1.0f)
@@ -114,26 +119,27 @@ public class Flower : MonoBehaviour
             fadeFraction = Mathf.Sqrt(fadeFraction);
         }
 
-        foreach (var child in model.GetComponentsInChildren<SpriteRenderer>())
+        foreach (var child in stolenModel.GetComponentsInChildren<SpriteRenderer>())
         {
             var color = child.color;
-            color.a = Mathf.Min(color.a, fadeFraction);
+            color.a = Mathf.Min(color.a, 1.0f - fadeFraction);
             child.color = color;
         }
 
         if (fadeFraction >= 1.0f)
         {
-            Destroy(model);
+            Destroy(stolenModel.gameObject);
+            stolenModel = null;
         }
     }
 
     public virtual void init(Flower previousFlower)
     {
-        if ((previousFlower != null) && (previousFadeOutSeconds > 0))
+        if (previousFlower != null)
         {
-            var model = previousFlower.transform.Find("Model");
-            model.name = "StolenModel";
-            model.SetParent(transform);
+            var stolenModelsParent = GameObject.Find("StolenModelsParent").transform; // We need stolenmodels to be static, so we parent to a static object.
+            stolenModel = previousFlower.transform.Find("Model");
+            stolenModel.SetParent(stolenModelsParent);
         }
     }
 
