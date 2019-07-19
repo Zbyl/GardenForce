@@ -10,6 +10,9 @@ public class CursorHandler : MonoBehaviour
     public float inputDelay;                ///< Delay between presses of one button.
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
 
+    public GameObject normalCursor;
+    public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
+
     private Map map;
 
     private Dictionary<string, float> lastPressed = new Dictionary<string, float>();
@@ -18,6 +21,7 @@ public class CursorHandler : MonoBehaviour
     void Start()
     {
         map = Map.instance;
+        mapPosition = map.getStartPosition(playerNumber);
     }
 
     // Update is called once per frame
@@ -67,6 +71,17 @@ public class CursorHandler : MonoBehaviour
         }
 
         this.transform.position = map.mapPositionToWorldPosition(this.mapPosition, map.cursorZ);
+
+        if (map.isMineFieldNearby(mapPosition, playerNumber))
+        {
+            normalCursor.SetActive(true);
+            forbiddenCursor.SetActive(false);
+        }
+        else
+        {
+            normalCursor.SetActive(false);
+            forbiddenCursor.SetActive(true);
+        }
     }
 
     void plantFlower(GameObject flowerPrefab)

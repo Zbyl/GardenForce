@@ -6,7 +6,7 @@ public class Map : MonoBehaviour
 {
     public static Map instance { get; private set; }
 
-    public Transform camera;
+    public Transform cameraPosition;
 
     public GameObject dirtPrefab;
 
@@ -20,14 +20,13 @@ public class Map : MonoBehaviour
 
     public float tileSize { get; private set; }
 
-    readonly int verticalSize = 10;
-    readonly int horizontalSize = 10;
+    public readonly int verticalSize = 10;
+    public readonly int horizontalSize = 10;
     public readonly float tileZ = 0;
     public readonly float flowerZ = -1;
     public readonly float cursorZ = -2;
 
     int currentTime = 0;
-    float lastTime = 0;
 
     public Map()
     {
@@ -61,9 +60,8 @@ public class Map : MonoBehaviour
         var topLeft = mapPositionToWorldPosition(new Vector2Int(0, 0), tileZ);
         var bottomRight = mapPositionToWorldPosition(new Vector2Int(horizontalSize, verticalSize), tileZ);
         var mapCenter = (topLeft + bottomRight) / 2;
-        mapCenter.z = camera.position.z;
-
-        camera.position = mapCenter;
+        mapCenter.z = cameraPosition.position.z;
+        cameraPosition.position = mapCenter;
 
         flowers = new Flower[verticalSize, horizontalSize];
         GenerateGround();
@@ -88,9 +86,36 @@ public class Map : MonoBehaviour
         }
     }
 
+    /// Returns flower in given map position, or null.
+    /// Position can be outside map (null is returned then).
+    public Flower getFlower(Vector2Int position)
+    {
+        if (!isPositionInsideMap(position))
+            return null;
+
+        return flowers[position.x, position.y];
+    }
+
+    public Vector2Int getStartPosition(int owner)
+    {
+        if (owner == 2)
+            return new Vector2Int(horizontalSize - 1, verticalSize - 1);
+        return Vector2Int.zero;
+    }
+
     public bool isMineFieldNearby(Vector2Int position, int owner)
     {
-        return true;
+        if (position == getStartPosition(owner)) return true;
+        
+        if (getFlower(position + Vector2Int.right)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.left)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.up)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.down)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.right + Vector2Int.up)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.left + Vector2Int.up)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.right + Vector2Int.down)?.owner == owner) return true;
+        if (getFlower(position + Vector2Int.left + Vector2Int.down)?.owner == owner) return true;
+        return false;
     }
 
     public Flower plantFlower(Vector2Int position, GameObject flowerPrefab, int owner)
@@ -112,6 +137,11 @@ public class Map : MonoBehaviour
 
     Flower instantiateFlowerRaw(Vector2Int position, GameObject flowerPrefab, int owner)
     {
+        if (!isPositionInsideMap(position))
+        {
+            return null;
+        }
+
         var worldPosition = mapPositionToWorldPosition(position, flowerZ);
         var newFlowerObject = Instantiate(flowerPrefab, worldPosition, Quaternion.identity);
         newFlowerObject.transform.SetParent(transform);
