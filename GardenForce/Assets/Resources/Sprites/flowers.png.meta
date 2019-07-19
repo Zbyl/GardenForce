@@ -101,8 +101,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,10 +120,10 @@ TextureImporter:
       name: flowers_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: flowers_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: flowers_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 192
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

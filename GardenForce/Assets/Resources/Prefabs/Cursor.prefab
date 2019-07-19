@@ -45,11 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117e62404c97789489431a6f339f766c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapOrigin: {fileID: 0}
-  tileSize: 0.66
   playerNumber: 1
   mapPosition: {x: 0, y: 0}
-  inputDelay: 0.1
+  inputDelay: 0.2
   particleBurst: {fileID: 5015670809536882925}
 --- !u!1 &2880946579235719669
 GameObject:

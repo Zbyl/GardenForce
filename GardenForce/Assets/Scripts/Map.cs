@@ -6,7 +6,7 @@ public class Map : MonoBehaviour
 {
     public static Map instance { get; private set; }
 
-    public Transform mapOrigin;
+    public Transform camera;
 
     public GameObject dirtPrefab;
 
@@ -22,7 +22,9 @@ public class Map : MonoBehaviour
 
     readonly int verticalSize = 10;
     readonly int horizontalSize = 10;
-    readonly float tileZ = 0;
+    public readonly float tileZ = 0;
+    public readonly float flowerZ = -1;
+    public readonly float cursorZ = -2;
 
     int currentTime = 0;
     float lastTime = 0;
@@ -36,15 +38,13 @@ public class Map : MonoBehaviour
     {
         ground = new GameObject[verticalSize, horizontalSize];
 
-        tileSize = dirtPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
         GameObject tileParent = new GameObject();
         tileParent.name = "TileParent";
         for (var i = 0; i < horizontalSize; i++)
         {
             for (var j = 0; j < verticalSize; j++)
             {
-                Vector3 pos = mapPositionToWorldPosition(new Vector2Int(j, i));
-                pos.z = tileZ;
+                Vector3 pos = mapPositionToWorldPosition(new Vector2Int(j, i), tileZ);
                 ground[j, i] = Instantiate(
                     dirtPrefab, pos, Quaternion.identity
                 );
@@ -55,6 +55,16 @@ public class Map : MonoBehaviour
 
     void Start()
     {
+        // We need this initialized for position computations to work properly. So iniitialize it first.
+        tileSize = dirtPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+
+        var topLeft = mapPositionToWorldPosition(new Vector2Int(0, 0), tileZ);
+        var bottomRight = mapPositionToWorldPosition(new Vector2Int(horizontalSize, verticalSize), tileZ);
+        var mapCenter = (topLeft + bottomRight) / 2;
+        mapCenter.z = camera.position.z;
+
+        camera.position = mapCenter;
+
         flowers = new Flower[verticalSize, horizontalSize];
         GenerateGround();
         StartCoroutine("Tick");
@@ -102,10 +112,13 @@ public class Map : MonoBehaviour
 
     Flower instantiateFlowerRaw(Vector2Int position, GameObject flowerPrefab, int owner)
     {
-        var newFLowerObject = Instantiate(flowerPrefab, mapPositionToWorldPosition(position), Quaternion.identity);
+        var worldPosition = mapPositionToWorldPosition(position, flowerZ);
+        var newFlowerObject = Instantiate(flowerPrefab, worldPosition, Quaternion.identity);
+        newFlowerObject.transform.SetParent(transform);
+
         var previousFlower = flowers[position.x, position.y];
 
-        var newFlower = newFLowerObject.GetComponent<Flower>();
+        var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;
         newFlower.position = position;
         newFlower.creationTIme = currentTime;
@@ -120,19 +133,19 @@ public class Map : MonoBehaviour
         return newFlower;
     }
 
-    public Vector3 mapPositionToWorldPosition(Vector2 position)
+    public Vector3 mapPositionToWorldPosition(Vector2 position, float z)
     {
-        return this.mapOrigin.position + Vector3.right * tileSize * position.x + Vector3.down * tileSize * position.y;
+        return this.transform.position + Vector3.right * tileSize * position.x + Vector3.down * tileSize * position.y + Vector3.forward * z;
     }
 
-    public Vector3 mapPositionToWorldPosition(Vector2Int position)
+    public Vector3 mapPositionToWorldPosition(Vector2Int position, float z)
     {
-        return mapPositionToWorldPosition(new Vector2(position.x, position.y));
+        return mapPositionToWorldPosition(new Vector2(position.x, position.y), z);
     }
 
     public Vector2 worldPositionToMapPosition(Vector3 position)
     {
-        var dir = position - this.mapOrigin.position;
+        var dir = position - this.transform.position;
         return new Vector2(dir.x / tileSize, dir.y / tileSize);
     }
 

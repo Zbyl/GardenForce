@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputHandler : MonoBehaviour
+public class CursorHandler : MonoBehaviour
 {
-    public float tileSize;
-
     public int playerNumber;
     public Vector2Int mapPosition;
 
@@ -72,7 +70,7 @@ public class InputHandler : MonoBehaviour
             particleBurst.Play();
         }
 
-        this.transform.position = Map.instance.mapPositionToWorldPosition(this.mapPosition);
+        this.transform.position = Map.instance.mapPositionToWorldPosition(this.mapPosition, Map.instance.cursorZ);
     }
 
     /// Returns if button was pressed. Handles input delay.
