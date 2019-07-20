@@ -713,6 +713,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &577164861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880946578450411677, guid: b5cad86af54887a4d8032535b0ef4338,
+    type: 3}
+  m_PrefabInstance: {fileID: 2880946579370406232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &580277084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880946578450411677, guid: b5cad86af54887a4d8032535b0ef4338,
+    type: 3}
+  m_PrefabInstance: {fileID: 1866394042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &869402116 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338,
@@ -1896,18 +1908,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor2
       objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3039922
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.8604591
-      objectReference: {fileID: 0}
     - target: {fileID: 2880946578450411679, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2012,6 +2012,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3039922
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8604591
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
@@ -2243,8 +2255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
-  playerOneGameObject: {fileID: 1368869202}
-  playerTwoGameObject: {fileID: 1821801181}
+  playerOneGameObject: {fileID: 577164861}
+  playerTwoGameObject: {fileID: 580277084}
   dirtPrefab: {fileID: 4026654398806174209, guid: e0802e9ae0df9411e989ff12486ae83e,
     type: 3}
   attackFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
