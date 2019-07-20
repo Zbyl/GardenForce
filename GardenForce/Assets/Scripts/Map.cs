@@ -170,7 +170,7 @@ public class Map : MonoBehaviour
     public Flower instantiateFlower(Vector2Int position, GameObject flowerPrefab, int owner, bool force = false)
     {
         var flower = getFlower(position);
-        if (!force && flower != null)
+        if ((!force && flower != null) || (flower?.type == Flower.FlowerType.protect))
             return null;
 
         return instantiateFlowerRaw(position, flowerPrefab, owner);
