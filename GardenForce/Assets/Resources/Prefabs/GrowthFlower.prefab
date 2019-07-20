@@ -85,14 +85,14 @@ MonoBehaviour:
   sourcePosition: {x: 0, y: 0}
   travelSpeed: 1
   createFadeInSeconds: 1
-  destroyFadeOutSeconds: 1
+  destroyFadeOutSeconds: 0.3
   previousFadeOutSeconds: 1
+  createSounds: []
   canSpawn: 1
-  colonizationStart: 2
-  colonizationDelay: 1
-  colonizationMinRadius: 1
-  colonizationMaxRadius: 2
-  colonizationCount: 4
+  growthStart: 5
+  growthDelay: 5
+  growthStages: 1000000
+  growthRadius: 10
 --- !u!1 &7755820329620946050
 GameObject:
   m_ObjectHideFlags: 0

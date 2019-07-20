@@ -31,10 +31,10 @@ public class Flower : MonoBehaviour
 
     private Transform stolenModel;         /// Model of the previous flower - will be faded out.
 
-    private Map map { get { return Map.instance; } }
+    protected Map map { get { return Map.instance; } }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         Map.playRandomSound(createSounds, transform.position);
     }

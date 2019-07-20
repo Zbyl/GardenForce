@@ -118,6 +118,13 @@ public class Map : MonoBehaviour
         return flowers[position.x, position.y];
     }
 
+    /// Returns flower in given map position, or null.
+    /// Position must be inside the map.
+    public Flower getFlowerNoBoundsCheck(Vector2Int position)
+    {
+        return flowers[position.x, position.y];
+    }
+
     public Vector2Int getStartPosition(int owner)
     {
         if (owner == 2)
