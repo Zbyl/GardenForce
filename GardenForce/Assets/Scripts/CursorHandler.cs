@@ -11,6 +11,7 @@ public class CursorHandler : MonoBehaviour
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
     public ParticleSystem particleGetSeed;
     public SpriteRenderer spriteSeedCounter;
+    public GameObject parasiteIndicator;    /// Indicates that a parasite is ready.
     public Sprite[] spriteSeedImages;
 
     public GameObject normalCursor;
@@ -18,6 +19,9 @@ public class CursorHandler : MonoBehaviour
     public const int maxSeeds = 5;
     int seeds = 0;
     int lastTimeSeedReceive = 0;
+
+    public float parasiteSpawnDelay;  /// Delay between successive parasite spawns (in seconds).
+    float lastTimeParasiteSpawned;  /// Last time a parasite was spawned.
 
     private Map map { get { return Map.instance; } }
 
@@ -58,10 +62,19 @@ public class CursorHandler : MonoBehaviour
             moveCursor(0, 1);
         }
 
+        var canSpawnParasite = (Time.time - lastTimeParasiteSpawned > parasiteSpawnDelay);
+        if (getButton("Parasite") && canSpawnParasite)
+        {
+            canSpawnParasite = false;
+            lastTimeParasiteSpawned = Time.time;
+            map.createParasite(mapPosition, playerNumber);
+        }
+        parasiteIndicator.SetActive(canSpawnParasite);
+
+
         if (getButton("PlantA"))
         {
             plantFlower(map.attackFlowerPrefab);
-            //map.createParasite(mapPosition, playerNumber);
         }
 
         if (getButton("PlantB"))

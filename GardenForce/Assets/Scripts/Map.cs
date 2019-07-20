@@ -240,8 +240,8 @@ public class Map : MonoBehaviour
 
     public Parasite createParasite(Vector2Int position, int owner)
     {
-        //if (!isMineFieldNearby(position, owner))
-        //    return null;
+        if (!isMineFieldNearby(position, owner))
+            return null;
 
         if (!isPositionInsideMap(position))
             return null;

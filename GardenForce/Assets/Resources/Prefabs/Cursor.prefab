@@ -4767,6 +4767,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ff6a62d8a60ab9de7bcc2d461c26802d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4942,6 +4943,7 @@ MonoBehaviour:
   particleBurst: {fileID: 5015670809536882925}
   particleGetSeed: {fileID: 999066718}
   spriteSeedCounter: {fileID: 5824575888638198415}
+  parasiteIndicator: {fileID: 0}
   spriteSeedImages:
   - {fileID: -2514515654098470544, guid: cf3fbefd8212e1f8b88bfed8afc26e4c, type: 3}
   - {fileID: 1361956904952742340, guid: cf3fbefd8212e1f8b88bfed8afc26e4c, type: 3}
@@ -4950,6 +4952,7 @@ MonoBehaviour:
   - {fileID: -3928540349575310258, guid: cf3fbefd8212e1f8b88bfed8afc26e4c, type: 3}
   normalCursor: {fileID: 2880946579235719669}
   forbiddenCursor: {fileID: 4917979288140259810}
+  parasiteSpawnDelay: 5
 --- !u!1 &2880946579235719669
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,15 +5180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e557d5d84e6aa243a69b2938691bcca, type: 3}
---- !u!198 &5015670809536882925 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4473968929283438179, guid: 6e557d5d84e6aa243a69b2938691bcca,
-    type: 3}
-  m_PrefabInstance: {fileID: 8902918340246183566}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5015670809536882926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4473968929283438176, guid: 6e557d5d84e6aa243a69b2938691bcca,
+    type: 3}
+  m_PrefabInstance: {fileID: 8902918340246183566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5015670809536882925 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4473968929283438179, guid: 6e557d5d84e6aa243a69b2938691bcca,
     type: 3}
   m_PrefabInstance: {fileID: 8902918340246183566}
   m_PrefabAsset: {fileID: 0}
