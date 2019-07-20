@@ -302,25 +302,27 @@ public class Map : MonoBehaviour
         return true;
     }
 
-    public Vector3 mapPositionToWorldPosition(Vector2 position, float z)
+    public Vector3 mapPositionToWorldPosition(Vector2 position, float z, bool useCenter = false)
     {
-        return this.transform.position + Vector3.right * tileSize * position.x + Vector3.down * tileSize * position.y + Vector3.forward * z;
+        var delta = useCenter ? 0.5f : 0.0f;
+        return this.transform.position + Vector3.right * tileSize * (position.x + delta) + Vector3.down * tileSize * (position.y + delta) + Vector3.forward * z;
     }
 
-    public Vector3 mapPositionToWorldPosition(Vector2Int position, float z)
+    public Vector3 mapPositionToWorldPosition(Vector2Int position, float z, bool useCenter = false)
     {
-        return mapPositionToWorldPosition(new Vector2(position.x, position.y), z);
+        return mapPositionToWorldPosition(new Vector2(position.x, position.y), z, useCenter);
     }
 
-    public Vector2 worldPositionToMapPosition(Vector3 position)
+    public Vector2 worldPositionToMapPosition(Vector3 position, bool useCenter = false)
     {
         var dir = position - this.transform.position;
-        return new Vector2(dir.x / tileSize, -dir.y / tileSize);
+        var delta = useCenter ? 0.5f : 0.0f;
+        return new Vector2(dir.x / tileSize - delta, -dir.y / tileSize - delta);
     }
 
-    public Vector2Int worldPositionToIntMapPosition(Vector3 position)
+    public Vector2Int worldPositionToIntMapPosition(Vector3 position, bool useCenter = false)
     {
-        var pos = worldPositionToMapPosition(position);
+        var pos = worldPositionToMapPosition(position, useCenter);
         return new Vector2Int((int)pos.x, (int)pos.y);
     }
 

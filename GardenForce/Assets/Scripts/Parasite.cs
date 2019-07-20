@@ -35,7 +35,7 @@ public class Parasite : MonoBehaviour
         currentAngle = Vector3.SignedAngle(Vector3.right, direction, Vector3.forward);
         lastDirectionChangeTime = creationTime;
 
-        var position3dCenter = map.mapPositionToWorldPosition(new Vector2(startPosition.x + 0.5f, startPosition.y + 0.5f), map.parasiteZ);
+        var position3dCenter = map.mapPositionToWorldPosition(startPosition, map.parasiteZ, true);
         transform.position = position3dCenter;
         transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
 
@@ -58,9 +58,9 @@ public class Parasite : MonoBehaviour
         }
 
         // Move parasite.
-        var oldPosition = map.worldPositionToIntMapPosition(transform.position);
+        var oldPosition = map.worldPositionToIntMapPosition(transform.position, false);
         transform.position += transform.right * map.mapUnitsToWorldUnits(travelSpeed);
-        var mapPosition = map.worldPositionToIntMapPosition(transform.position);
+        var mapPosition = map.worldPositionToIntMapPosition(transform.position, false);
 
         var dieNow = false;
         if (map.isPositionInsideMap(mapPosition))
