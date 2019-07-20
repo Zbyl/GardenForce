@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7875579508697614857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1121883195520020240}
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -7397708045047540520, guid: cf3fbefd8212e1f8b88bfed8afc26e4c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
   - {fileID: 8300000, guid: efe2b051f4edf8481aaa21d6e0d29ad0, type: 3}
   canSpawn: 1
+  spawnAfterDeath: {fileID: 0}
   life_ticks: 5
 --- !u!1 &9168401533678623049
 GameObject:
@@ -197,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9168401533678623049}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1121883195520020240}
@@ -239,7 +240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7702638131693110658, guid: cf3fbefd8212e1f8b88bfed8afc26e4c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
