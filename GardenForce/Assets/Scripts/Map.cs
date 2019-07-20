@@ -241,4 +241,18 @@ public class Map : MonoBehaviour
         var pos = worldPositionToMapPosition(position);
         return new Vector2Int((int)pos.x, (int)pos.y);
     }
+
+    public static bool playRandomSound(AudioClip[] sounds, Vector3 position)
+    {
+        if (sounds.Length == 0)
+            return false;
+
+        var soundsIdx = Random.Range(0, sounds.Length);
+        var sound = sounds[soundsIdx];
+        if (sound == null)
+            return false;
+
+        AudioSource.PlayClipAtPoint(sound, position);
+        return true;
+    }
 }

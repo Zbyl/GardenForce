@@ -27,6 +27,8 @@ public class Flower : MonoBehaviour
     public float destroyFadeOutSeconds;    /// Duration of fade out during destruction.
     public float previousFadeOutSeconds;   /// Duration of fade out of previous flower.
 
+    public AudioClip[] createSounds = { };  /// Sounds played when flower is created.
+
     private Transform stolenModel;         /// Model of the previous flower - will be faded out.
 
     private Map map { get { return Map.instance; } }
@@ -34,6 +36,7 @@ public class Flower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Map.playRandomSound(createSounds, transform.position);
     }
 
     void Update()
@@ -45,7 +48,8 @@ public class Flower : MonoBehaviour
 
     void OnDisable()
     {
-        Destroy(stolenModel);
+        if (stolenModel != null)
+            Destroy(stolenModel.gameObject);
     }
 
     public void setSourcePosition(Vector2Int position)

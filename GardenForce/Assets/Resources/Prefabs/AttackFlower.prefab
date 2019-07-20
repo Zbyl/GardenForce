@@ -167,6 +167,8 @@ MonoBehaviour:
   createFadeInSeconds: 1
   destroyFadeOutSeconds: 0.3
   previousFadeOutSeconds: 1
+  createSounds:
+  - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
   canSpawn: 1
   life_ticks: 5
 --- !u!1 &9168401533678623049
