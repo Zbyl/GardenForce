@@ -35,6 +35,9 @@ public class CursorHandler : MonoBehaviour
         //Debug.Log(Input.mousePosition);
         //Debug.Log("X=" + Input.GetAxisRaw("AxisX" + playerNumber) + " Y=" + Input.GetAxisRaw("AxisY" + playerNumber));
 
+        if (Time.timeScale <= 0)
+            return;
+
         if (getButton("Left"))
         {
             moveCursor(-1, 0);
