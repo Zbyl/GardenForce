@@ -89,10 +89,10 @@ MonoBehaviour:
   previousFadeOutSeconds: 1
   createSounds: []
   canSpawn: 1
-  growthStart: 5
-  growthDelay: 5
+  growthStart: 20
+  growthDelay: 20
   growthStages: 1000000
-  growthRadius: 10
+  growthRadius: 8
 --- !u!1 &7755820329620946050
 GameObject:
   m_ObjectHideFlags: 0

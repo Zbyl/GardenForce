@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 public class GrowthFlower : Flower
 {
     public bool canSpawn = true;
+    GrowthFlower parentFlower;  /// Flower that spawned us.
 
     public int growthStart;         /// First sprout is generated in this tick.
     public int growthDelay;         /// Delay between generating growing stages.
     public int growthStages;        /// How many growth stages to do.
     public float growthRadius;      /// Maximal growth radius.
+
 
     public override void logicUpdate(int currentTime)
     {
@@ -35,53 +38,37 @@ public class GrowthFlower : Flower
     private Dictionary<Vector2Int, Vector2Int> sprouts = new Dictionary<Vector2Int, Vector2Int>();  /// Sprouts generated in this logic update.
     private bool[,] reachableMap;   /// Map of growth flowers that are reachable from the source.
 
-    /// Gets previous cell towards source.
-    private static Vector2Int getPreviousCell(Vector2Int cell, Vector2Int source)
+    /// Gets previous cells towards source.
+    private static Tuple<Vector2Int, Vector2Int> getPreviousCells(Vector2Int cell, Vector2Int source)
     {
-        Vector2Int previousCell;
-
         var diff = cell - source;
         var absDX = Mathf.Abs(diff.x);
         var absDY = Mathf.Abs(diff.y);
+        var epsilon = 0.01f;
         if (absDX > absDY)
         {
             // "horizontal" line
-            var dY = (int)((float)diff.y / absDX * (absDX - 1));
+            var dY = (float)diff.y / absDX * (absDX - 1);
             var dX = (diff.x >= 0) ? -1 : 1;
-            previousCell = new Vector2Int(cell.x + dX, source.y + dY);
+            return Tuple.Create(new Vector2Int(cell.x + dX, source.y + Mathf.FloorToInt(dY + epsilon)), new Vector2Int(cell.x + dX, source.y + Mathf.CeilToInt(dY - epsilon)));
         }
         else
         {
             // "vertical" line
-            var dX = (int)((float)diff.x / absDY * (absDY - 1));
+            var dX = (float)diff.x / absDY * (absDY - 1);
             var dY = (diff.y >= 0) ? -1 : 1;
-            previousCell = new Vector2Int(source.x + dX, cell.y + dY);
+            return Tuple.Create(new Vector2Int(source.x + Mathf.FloorToInt(dX + epsilon), cell.y + dY), new Vector2Int(source.x + Mathf.CeilToInt(dX - epsilon), cell.y + dY));
         }
-
-        /*if (!Map.instance.isPositionInsideMap(previousCell))
-        {
-            Debug.LogError("Source: " + source);
-            Debug.LogError("Cell: " + cell);
-        }*/
-
-        return previousCell;
     }
 
-    /// Returns true if cellEnd can be reached from cellStart by walking only on reachable cell, and not diagonally.
-    /// cellEnd doesn't have to be reachable.
-    /// cellStart and cellEnd should be neighbouring cells.
+    /// Returns true if both cellPaths are reachable.
     /// Note: Both cells must be inside the map.
-    private bool canReach(Vector2Int cellEnd, Vector2Int cellStart)
+    private bool canReach(Tuple<Vector2Int, Vector2Int> cellPath)
     {
-        if (!reachableMap[cellStart.x, cellStart.y]) return false;
+        if (!reachableMap[cellPath.Item1.x, cellPath.Item1.y]) return false;
+        if (!reachableMap[cellPath.Item2.x, cellPath.Item2.y]) return false;
 
-        var dX = (cellEnd.x > cellStart.x) ? 1 : ((cellEnd.x < cellStart.x) ? -1 : 0);
-        var dY = (cellEnd.y > cellStart.y) ? 1 : ((cellEnd.y < cellStart.y) ? -1 : 0);
-
-        if (reachableMap[cellStart.x + dX, cellStart.y]) return true;
-        if (reachableMap[cellStart.x, cellStart.y + dY]) return true;
-
-        return false;
+        return true;
     }
 
     /// Marks growth flowers that are reachable from the source.
@@ -90,10 +77,10 @@ public class GrowthFlower : Flower
     /// Note: cell must be inside the map.
     private bool markReachable(Vector2Int cell)
     {
-        var previousCell = getPreviousCell(cell, position);
+        var previousCells = getPreviousCells(cell, position);
 
         // Mark cell reachable only if previous cell is reachable and this cell contains a growth flower.
-        if (!canReach(cell, previousCell))
+        if (!canReach(previousCells))
         {
             return false;
         }
@@ -106,6 +93,9 @@ public class GrowthFlower : Flower
 
         if ((cellFlower.type == FlowerType.grow) && (cellFlower.owner == owner))
         {
+            var cellFlowerIsDescendant = (cellFlower == this) || ((cellFlower as GrowthFlower).parentFlower == this);
+            if (!cellFlowerIsDescendant)
+                return false;
             reachableMap[cell.x, cell.y] = true;
             return true;
         }
@@ -123,13 +113,13 @@ public class GrowthFlower : Flower
             return;
         }
 
-        var previousCell = getPreviousCell(cell, position);
+        var previousCells = getPreviousCells(cell, position);
 
         // Can spawn only if previous cell is reachable.
-        if (canReach(cell, previousCell))
+        if (canReach(previousCells))
         {
             // Spawn new growth flower here.
-            sprouts.Add(cell, previousCell);
+            sprouts.Add(cell, previousCells.Item1);
         }
     }
 
@@ -216,6 +206,7 @@ public class GrowthFlower : Flower
 
         childFlower.canSpawn = false;
         childFlower.setSourcePosition(sourcePosition);
+        childFlower.parentFlower = this;
         return true;
     }
 }
