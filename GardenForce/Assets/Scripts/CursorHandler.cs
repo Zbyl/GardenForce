@@ -58,6 +58,7 @@ public class CursorHandler : MonoBehaviour
         if (getButton("PlantA"))
         {
             plantFlower(map.attackFlowerPrefab);
+            //map.createParasite(mapPosition, playerNumber);
         }
 
         if (getButton("PlantB"))

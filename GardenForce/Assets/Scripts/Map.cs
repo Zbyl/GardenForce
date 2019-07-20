@@ -19,19 +19,22 @@ public class Map : MonoBehaviour
     public GameObject defenseFlowerPrefab;
     public GameObject colonizeFlowerPrefab;
     public GameObject growFlowerPrefab;
+    public GameObject idleFlowerPrefab; /// Flower that doesn't do anything. It just sits on the map.
+    public GameObject parasitePrefab;   /// Parasite. It is not a flower.
 
     public GameObject fadeOutPrefab;
 
     public Flower[,] flowers { get; private set; }
     public GameObject[,] ground { get; private set; }
-
+    internal List<Parasite> parasites = new List<Parasite>();
 
     public readonly int width = 40;
     public readonly int height = 20;
     public float tileSize { get; private set; }
-    public readonly float tileZ = 0;
-    public readonly float flowerZ = -1;
-    public readonly float cursorZ = -2;
+    public float tileZ;
+    public float flowerZ;
+    public float parasiteZ;
+    public float cursorZ;
 
     readonly Color[] playerColor = {
         new Color(128, 0, 0),
@@ -116,6 +119,12 @@ public class Map : MonoBehaviour
 
             flower.GetComponent<Flower>().logicUpdate(currentTime);
             playerPoints[flower.owner - 1]++;
+        }
+
+        var parasitesCopy = new List<Parasite>(parasites);  // Parasites delete themselves, so protect against this.
+        foreach (var parasite in parasitesCopy)
+        {
+            parasite.logicUpdate(currentTime);
         }
     }
 
@@ -230,6 +239,28 @@ public class Map : MonoBehaviour
         return newFlower;
     }
 
+    public Parasite createParasite(Vector2Int position, int owner)
+    {
+        //if (!isMineFieldNearby(position, owner))
+        //    return null;
+
+        if (!isPositionInsideMap(position))
+            return null;
+
+        var worldPosition = mapPositionToWorldPosition(position, flowerZ);
+        var newParasiteObject = Instantiate(parasitePrefab, worldPosition, Quaternion.identity);
+        newParasiteObject.transform.SetParent(transform);
+
+        var parasite = newParasiteObject.GetComponent<Parasite>();
+        parasite.owner = owner;
+        parasite.startPosition = position;
+        parasite.creationTime = currentTime;
+        parasite.creationTimeInSeconds = Time.time;
+        parasites.Add(parasite);
+
+        return parasite;
+    }
+
     public bool isPositionInsideMap(Vector2Int position)
     {
         if (position.x < 0) return false;
@@ -252,13 +283,18 @@ public class Map : MonoBehaviour
     public Vector2 worldPositionToMapPosition(Vector3 position)
     {
         var dir = position - this.transform.position;
-        return new Vector2(dir.x / tileSize, dir.y / tileSize);
+        return new Vector2(dir.x / tileSize, -dir.y / tileSize);
     }
 
     public Vector2Int worldPositionToIntMapPosition(Vector3 position)
     {
         var pos = worldPositionToMapPosition(position);
         return new Vector2Int((int)pos.x, (int)pos.y);
+    }
+
+    public float mapUnitsToWorldUnits(float mapUnits)
+    {
+        return mapUnits * tileSize;
     }
 
     public static bool playRandomSound(AudioClip[] sounds, Vector3 position)

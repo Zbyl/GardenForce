@@ -4,6 +4,7 @@ using UnityEditor;
 public class AttackFlower : Flower
 {
     public bool canSpawn = true;
+    public GameObject spawnAfterDeath;  /// Plant to spawn after this flower dies of old age. Used only when canSpawn is true;
 
     readonly int[,] spawn_map = new int[,] {
         { 0, 4, 3, 4, 0 },
@@ -38,6 +39,10 @@ public class AttackFlower : Flower
         if (stage == life_ticks)
         {
             Map.instance.removeFlower(this.position);
+            if (spawnAfterDeath != null)
+            {
+                Map.instance.instantiateFlower(position, spawnAfterDeath, owner);
+            }
         }
     }
 

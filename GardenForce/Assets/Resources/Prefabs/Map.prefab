@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8080754433598507859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8080754433598507885}
+  - component: {fileID: 8080754433598507858}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8080754433598507885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080754433598507859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8080754433598507858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080754433598507859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8504bacd6e7c57778b65957a9ba7cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  playerOneGameObject: {fileID: 0}
+  playerTwoGameObject: {fileID: 0}
+  dirtPrefab: {fileID: 4026654398806174209, guid: e0802e9ae0df9411e989ff12486ae83e,
+    type: 3}
+  attackFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
+    type: 3}
+  defenseFlowerPrefab: {fileID: 3436037028164340223, guid: 1943f9e3c49bb2a3eb2eefdbeedd1543,
+    type: 3}
+  colonizeFlowerPrefab: {fileID: 7884262249713015480, guid: 5fc7663b9ef82ff4eb1b0d8c01f6a9a1,
+    type: 3}
+  growFlowerPrefab: {fileID: 7747068868520176691, guid: fb4bef90b884994b4868fd6d43e47ec9,
+    type: 3}
+  idleFlowerPrefab: {fileID: 7747068868520176691, guid: 02e46bf4d099b2b4682687d0af1b84ba,
+    type: 3}
+  parasitePrefab: {fileID: 1687694159247805806, guid: 1d911b772a6ec4a4cb83e9e1d6364c6e,
+    type: 3}
+  fadeOutPrefab: {fileID: 6128730739379415462, guid: b73770e18472b7b40877f3758ca8b1f0,
+    type: 3}
+  tileZ: 0
+  flowerZ: -1
+  parasiteZ: -3
+  cursorZ: -2
