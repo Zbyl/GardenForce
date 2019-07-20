@@ -82,7 +82,8 @@ MonoBehaviour:
   creationTime: 0
   creationTimeInSeconds: 0
   self_destruct: 0
-  sourcePosition: {x: 0, y: 0}
+  sourcePosition2d: {x: 0, y: 0}
+  sourcePosition3d: {x: 0, y: 0, z: 0}
   travelSpeed: 1
   createFadeInSeconds: 1
   destroyFadeOutSeconds: 0.3
@@ -93,6 +94,7 @@ MonoBehaviour:
   growthDelay: 20
   growthStages: 1000000
   growthRadius: 8
+  growthRadiusPerStage: 1
 --- !u!1 &7755820329620946050
 GameObject:
   m_ObjectHideFlags: 0

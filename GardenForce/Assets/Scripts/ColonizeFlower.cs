@@ -78,7 +78,7 @@ public class ColonizeFlower : Flower
             return false;
 
         childFlower.canSpawn = false;
-        childFlower.setSourcePosition(this.position);
+        childFlower.setSourcePosition(this.position, map.mapPositionToWorldPosition(this.position, map.flowerZ));
         return true;
     }
 }

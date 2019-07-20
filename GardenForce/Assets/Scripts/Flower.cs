@@ -21,7 +21,8 @@ public class Flower : MonoBehaviour
     public float creationTimeInSeconds;       /// Creation time in seconds - used for animations and such. Not for logic.
     public bool self_destruct;
 
-    public Vector2Int sourcePosition;      /// On creation flower will smoothly travel from this position to it's destination.
+    public Vector2Int sourcePosition2d;      /// On creation flower will smoothly travel from this position to it's destination.
+    public Vector3 sourcePosition3d;      /// On creation flower will smoothly travel from this position to it's destination.
     public float travelSpeed;       /// How fast does a sprout travel. In tiles per second.
     public float createFadeInSeconds;      /// Duration of fade in during creation.
     public float destroyFadeOutSeconds;    /// Duration of fade out during destruction.
@@ -52,27 +53,27 @@ public class Flower : MonoBehaviour
             Destroy(stolenModel.gameObject);
     }
 
-    public void setSourcePosition(Vector2Int position)
+    public void setSourcePosition(Vector2Int position2d, Vector3 position3d)
     {
-        sourcePosition = position;
-        transform.position = map.mapPositionToWorldPosition(position, map.flowerZ);
+        sourcePosition2d = position2d;
+        sourcePosition3d = position3d;
+        transform.position = position3d;
     }
 
     /// Logic for smooth movement from sourcePosition to final position.
     void travelToPosition()
     {
         var travelFraction = 1.0f;
-        if (position != sourcePosition)
+        var destPos = map.mapPositionToWorldPosition(position, map.flowerZ);
+        if (destPos != sourcePosition3d)
         {
-            travelFraction = (Time.time - creationTimeInSeconds) * travelSpeed / (position - sourcePosition).magnitude;
+            travelFraction = (Time.time - creationTimeInSeconds) * travelSpeed / (destPos - sourcePosition3d).magnitude;
         }
 
-        var sourcePos = map.mapPositionToWorldPosition(sourcePosition, map.flowerZ);
-        var destPos = map.mapPositionToWorldPosition(position, map.flowerZ);
         if (travelFraction < 1.0f)
         {
             travelFraction = Mathf.Sqrt(travelFraction);
-            transform.position = sourcePos * (1 - travelFraction) + destPos * travelFraction;
+            transform.position = sourcePosition3d * (1 - travelFraction) + destPos * travelFraction;
         }
         else
         {

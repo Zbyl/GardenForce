@@ -210,7 +210,8 @@ public class Map : MonoBehaviour
         var newFlower = newFlowerObject.GetComponent<Flower>();
         newFlower.owner = owner;
         newFlower.position = position;
-        newFlower.sourcePosition = position;
+        newFlower.sourcePosition2d = position;
+        newFlower.sourcePosition3d = worldPosition;
         newFlower.creationTime = currentTime;
         newFlower.creationTimeInSeconds = Time.time;
         newFlower.init(previousFlower);

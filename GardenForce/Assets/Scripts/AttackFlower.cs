@@ -48,7 +48,7 @@ public class AttackFlower : Flower
         if (childFlower != null)
         {
             childFlower.canSpawn = false;
-            childFlower.setSourcePosition(this.position);
+            childFlower.setSourcePosition(this.position, map.mapPositionToWorldPosition(this.position, map.flowerZ));
         }
     }
 }
