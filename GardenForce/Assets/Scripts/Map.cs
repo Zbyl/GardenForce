@@ -28,6 +28,8 @@ public class Map : MonoBehaviour
     public readonly float flowerZ = -1;
     public readonly float cursorZ = -2;
 
+    public readonly int[] playerPoints = new int[2];
+
     int currentTime = 0;
 
     public Map()
@@ -87,9 +89,17 @@ public class Map : MonoBehaviour
     void logicUpdate()
     {
         currentTime++;
+
+        playerPoints[0] = 0;
+        playerPoints[1] = 0;
+
         foreach (var flower in flowers)
         {
-            flower?.GetComponent<Flower>().logicUpdate(currentTime);
+            if (flower == null)
+                continue;
+
+            flower.GetComponent<Flower>().logicUpdate(currentTime);
+            playerPoints[flower.owner - 1]++;
         }
     }
 
