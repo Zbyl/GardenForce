@@ -4708,8 +4708,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b354dc7e49728764c8169ce77d694760, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ff6a62d8a60ab9de7bcc2d461c26802d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4804,6 +4803,8 @@ MonoBehaviour:
   inputDelay: 0.1
   particleBurst: {fileID: 5015670809536882925}
   particleHasSeed: {fileID: 999066718}
+  spriteSeedCounter: {fileID: 0}
+  spriteSeedImages: []
   normalCursor: {fileID: 2880946579235719669}
   forbiddenCursor: {fileID: 4917979288140259810}
 --- !u!1 &2880946579235719669
