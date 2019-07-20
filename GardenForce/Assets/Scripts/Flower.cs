@@ -19,7 +19,6 @@ public class Flower : MonoBehaviour
     public Vector2Int position;
     public int creationTime;                /// Creation time in game ticks.
     public float creationTimeInSeconds;       /// Creation time in seconds - used for animations and such. Not for logic.
-    public bool self_destruct;
 
     public Vector2Int sourcePosition2d;      /// On creation flower will smoothly travel from this position to it's destination.
     public Vector3 sourcePosition3d;      /// On creation flower will smoothly travel from this position to it's destination.
@@ -37,7 +36,6 @@ public class Flower : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        Map.playRandomSound(createSounds, transform.position);
     }
 
     void Update()

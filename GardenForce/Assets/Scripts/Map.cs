@@ -67,8 +67,7 @@ public class Map : MonoBehaviour
                 ground[i, j].transform.SetParent(tileParent.transform);
             }
         }
-    }
-
+    } 
     void Start()
     {
         // We need this initialized for position computations to work properly. So iniitialize it first.
