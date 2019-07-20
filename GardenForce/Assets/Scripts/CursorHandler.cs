@@ -17,7 +17,8 @@ public class CursorHandler : MonoBehaviour
     public GameObject normalCursor;
     public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
     public const int maxSeeds = 5;
-    int seeds = 0;
+    public int seeds { get; private set; } = 0;
+
     int lastTimeSeedReceive = 0;
 
     public float parasiteSpawnDelay;  /// Delay between successive parasite spawns (in seconds).

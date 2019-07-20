@@ -36,7 +36,7 @@ public class Map : MonoBehaviour
 
     public readonly int width = 40;
     public readonly int height = 20;
-    public readonly float tickLimit = 60;
+    public float tickLimit = 60;
     public float tileSize { get; private set; }
     public float tileZ;
     public float flowerZ;
