@@ -9,7 +9,7 @@ public class CursorHandler : MonoBehaviour
 
     public float inputDelay;                ///< Delay between presses of one button.
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
-    public ParticleSystem particleHasSeed;
+    public ParticleSystem particleGetSeed;
     public SpriteRenderer spriteSeedCounter;
     public Sprite[] spriteSeedImages;
 
@@ -91,23 +91,16 @@ public class CursorHandler : MonoBehaviour
 
     public void logicUpdate(int currentTime)
     {
-        if (currentTime - lastTimeSeedReceive > 10)
+        if (seeds < maxSeeds)
         {
-            if (seeds < maxSeeds)
+            if (currentTime - lastTimeSeedReceive > 20)
             {
-                if (seeds == 0)
-                {
-                    var main = particleHasSeed.main;
-                    main.loop = true;
-                    particleHasSeed.Play();
-                }
-                seeds++;
-
-                // Increase number of pulses, but i think it looks werid
-                //var emission = particleHasSeed.emission;
-                //emission.rateOverTime = seeds;
+                setSeedsNumber(seeds + 1);
+                lastTimeSeedReceive = currentTime;
             }
-
+        }
+        else
+        {
             lastTimeSeedReceive = currentTime;
         }
     }
@@ -122,14 +115,27 @@ public class CursorHandler : MonoBehaviour
         {
             //Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
             particleBurst.Play();
-            seeds--;
-
-            if (seeds <= 0)
-            {
-                var main = particleHasSeed.main;
-                main.loop = false;
-            }
+            setSeedsNumber(seeds - 1);
         }
+    }
+
+    void setSeedsNumber(int set_seeds)
+    {
+        if (set_seeds > seeds)
+        {
+            particleGetSeed.Play();
+        }
+
+        if (set_seeds <= 0)
+        {
+            spriteSeedCounter.sprite = null;
+        }
+        else
+        {
+            spriteSeedCounter.sprite = spriteSeedImages[set_seeds - 1];
+        }
+
+        seeds = set_seeds;
     }
 
     bool moveCursor(int deltaX, int deltaY)

@@ -829,6 +829,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor2
       objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3039922
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8604591
+      objectReference: {fileID: 0}
     - target: {fileID: 2880946578450411679, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -933,18 +945,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.8867924
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3039922
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.8862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.8604591
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
@@ -1168,14 +1168,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.9970093
-      objectReference: {fileID: 0}
-    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0.6621627
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
