@@ -129,12 +129,14 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   creationTime: 0
   creationTimeInSeconds: 0
-  self_destruct: 0
-  sourcePosition: {x: 0, y: 0}
+  sourcePosition2d: {x: 0, y: 0}
+  sourcePosition3d: {x: 0, y: 0, z: 0}
   travelSpeed: 0
   createFadeInSeconds: 0
   destroyFadeOutSeconds: 0
   previousFadeOutSeconds: 0
+  createSounds:
+  - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
 --- !u!1 &4465727331234089486
 GameObject:
   m_ObjectHideFlags: 0

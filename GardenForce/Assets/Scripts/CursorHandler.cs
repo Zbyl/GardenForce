@@ -115,6 +115,7 @@ public class CursorHandler : MonoBehaviour
         {
             //Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
             particleBurst.Play();
+            Map.playRandomSound(flower.createSounds, new Vector3(0,0,-10));
             setSeedsNumber(seeds - 1);
         }
     }
