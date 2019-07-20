@@ -7,6 +7,11 @@ public class Map : MonoBehaviour
     public static Map instance { get; private set; }
 
     public Camera camera;
+    
+    public GameObject playerOneGameObject;
+    public GameObject playerTwoGameObject;
+    CursorHandler playerOne;
+    CursorHandler playerTwo;
 
     public GameObject dirtPrefab;
 
@@ -79,6 +84,10 @@ public class Map : MonoBehaviour
 
         flowers = new Flower[width, height];
         GenerateGround();
+
+        playerOne = playerOneGameObject.GetComponent<CursorHandler>();
+        playerTwo = playerTwoGameObject.GetComponent<CursorHandler>();
+
         StartCoroutine("Tick");
     }
 
@@ -97,6 +106,8 @@ public class Map : MonoBehaviour
 
         playerPoints[0] = 0;
         playerPoints[1] = 0;
+        playerOne.logicUpdate(currentTime);
+        playerTwo.logicUpdate(currentTime);
 
         foreach (var flower in flowers)
         {

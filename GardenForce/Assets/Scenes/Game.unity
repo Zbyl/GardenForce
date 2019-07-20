@@ -388,6 +388,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &869402116 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338,
+    type: 3}
+  m_PrefabInstance: {fileID: 1866394042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928167828
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +730,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1368869202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880946578450411677, guid: b5cad86af54887a4d8032535b0ef4338,
+    type: 3}
+  m_PrefabInstance: {fileID: 2880946579370406232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1704897161
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +811,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704897161}
   m_CullTransparentMesh: 0
+--- !u!1 &1821801181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880946578450411677, guid: b5cad86af54887a4d8032535b0ef4338,
+    type: 3}
+  m_PrefabInstance: {fileID: 1866394042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1866394042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -881,6 +899,11 @@ PrefabInstance:
       propertyPath: inputDelay
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: particleHasSeed
+      value: 
+      objectReference: {fileID: 869402116}
     - target: {fileID: 2880946579235719671, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_Color.r
@@ -910,6 +933,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3039922
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8604591
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
@@ -1009,6 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
+  playerOneGameObject: {fileID: 1368869202}
+  playerTwoGameObject: {fileID: 1821801181}
   dirtPrefab: {fileID: 4026654398806174209, guid: e0802e9ae0df9411e989ff12486ae83e,
     type: 3}
   attackFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
@@ -1080,7 +1117,7 @@ PrefabInstance:
     - target: {fileID: 2880946578450411679, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 2880946578450411679, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
@@ -1132,45 +1169,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: mapOrigin
-      value: 
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.9970093
       objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: inputDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946579235719671, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946579235719671, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.58452964
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946579235719671, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.11173906
-      objectReference: {fileID: 0}
-    - target: {fileID: 7031424848946320708, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 7031424848946320708, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.09251513
-      objectReference: {fileID: 0}
-    - target: {fileID: 7031424848946320708, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.15966915
+    - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.6621627
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
