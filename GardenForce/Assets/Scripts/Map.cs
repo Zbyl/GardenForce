@@ -13,7 +13,9 @@ public class Map : MonoBehaviour
     CursorHandler playerOne;
     CursorHandler playerTwo;
 
-    public GameObject dirtPrefab;
+    public GameObject[] dirtPrefabs;
+    public GameObject[] rockPrefabs;
+    public float rockProbability;   /// Probability rock will be chosen during map generation.
 
     public GameObject attackFlowerPrefab;
     public GameObject defenseFlowerPrefab;
@@ -25,7 +27,7 @@ public class Map : MonoBehaviour
     public GameObject fadeOutPrefab;
 
     public Flower[,] flowers { get; private set; }
-    public GameObject[,] ground { get; private set; }
+    public int[,] ground { get; private set; }  // 0 - dirt, 1 - rock
     internal List<Parasite> parasites = new List<Parasite>();
 
     public readonly int width = 40;
@@ -50,9 +52,25 @@ public class Map : MonoBehaviour
         instance = this;
     }
 
+    static GameObject randomPrefab(GameObject[] gameObjects)
+    {
+        if (gameObjects.Length == 0)
+            return null;
+
+        var index = Random.Range(0, gameObjects.Length);
+        return gameObjects[index];
+    }
+
+    void instantiateTile(Vector2Int position, GameObject prefab, GameObject tileParent)
+    {
+        Vector3 pos = mapPositionToWorldPosition(position, tileZ);
+        var tile = Instantiate(prefab, pos, Quaternion.identity);
+        tile.transform.SetParent(tileParent.transform);
+    }
+
     public void GenerateGround()
     {
-        ground = new GameObject[width, height];
+        ground = new int[width, height];
 
         GameObject tileParent = new GameObject();
         tileParent.name = "TileParent";
@@ -60,18 +78,20 @@ public class Map : MonoBehaviour
         {
             for (var j = 0; j < height; j++)
             {
-                Vector3 pos = mapPositionToWorldPosition(new Vector2Int(i, j), tileZ);
-                ground[i, j] = Instantiate(
-                    dirtPrefab, pos, Quaternion.identity
-                );
-                ground[i, j].transform.SetParent(tileParent.transform);
+                var placeRock = Random.value < rockProbability;
+                ground[i, j] = placeRock ? 1 : 0;
+
+                var mapPosition = new Vector2Int(i, j);
+                instantiateTile(mapPosition, randomPrefab(dirtPrefabs), tileParent);
+                if (placeRock)
+                    instantiateTile(mapPosition, randomPrefab(rockPrefabs), tileParent);
             }
         }
     } 
     void Start()
     {
         // We need this initialized for position computations to work properly. So iniitialize it first.
-        tileSize = dirtPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+        tileSize = dirtPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x;
 
         var topLeft = mapPositionToWorldPosition(new Vector2Int(0, 0), tileZ);
         var bottomRight = mapPositionToWorldPosition(new Vector2Int(width, height), tileZ);
@@ -212,6 +232,12 @@ public class Map : MonoBehaviour
     Flower instantiateFlowerRaw(Vector2Int position, GameObject flowerPrefab, int owner)
     {
         if (!isPositionInsideMap(position))
+        {
+            return null;
+        }
+
+        // We cannot instantiate any flower on a rock.
+        if (ground[position.x, position.y] != 0)
         {
             return null;
         }
