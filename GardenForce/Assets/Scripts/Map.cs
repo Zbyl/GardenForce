@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour
 {
     public static Map instance { get; private set; }
 
     public Camera camera;
-    
+
     public GameObject playerOneGameObject;
     public GameObject playerTwoGameObject;
     CursorHandler playerOne;
@@ -26,12 +27,16 @@ public class Map : MonoBehaviour
 
     public GameObject fadeOutPrefab;
 
+    public GameObject victoryWindow;
+
     public Flower[,] flowers { get; private set; }
     public int[,] ground { get; private set; }  // 0 - dirt, 1 - rock
     internal List<Parasite> parasites = new List<Parasite>();
+    public int ticksPassed { get; private set; }
 
     public readonly int width = 40;
     public readonly int height = 20;
+    public readonly float tickLimit = 600;
     public float tileSize { get; private set; }
     public float tileZ;
     public float flowerZ;
@@ -45,7 +50,6 @@ public class Map : MonoBehaviour
 
     public readonly int[] playerPoints = new int[2];
 
-    int currentTime = 0;
 
     public Map()
     {
@@ -87,7 +91,7 @@ public class Map : MonoBehaviour
                     instantiateTile(mapPosition, randomPrefab(rockPrefabs), tileParent);
             }
         }
-    } 
+    }
     void Start()
     {
         // We need this initialized for position computations to work properly. So iniitialize it first.
@@ -124,26 +128,31 @@ public class Map : MonoBehaviour
 
     void logicUpdate()
     {
-        currentTime++;
+        ticksPassed++;
 
         playerPoints[0] = 0;
         playerPoints[1] = 0;
-        playerOne.logicUpdate(currentTime);
-        playerTwo.logicUpdate(currentTime);
+        playerOne.logicUpdate(ticksPassed);
+        playerTwo.logicUpdate(ticksPassed);
 
         foreach (var flower in flowers)
         {
             if (flower == null)
                 continue;
 
-            flower.GetComponent<Flower>().logicUpdate(currentTime);
+            flower.GetComponent<Flower>().logicUpdate(ticksPassed);
             playerPoints[flower.owner - 1]++;
         }
 
         var parasitesCopy = new List<Parasite>(parasites);  // Parasites delete themselves, so protect against this.
         foreach (var parasite in parasitesCopy)
         {
-            parasite.logicUpdate(currentTime);
+            parasite.logicUpdate(ticksPassed);
+        }
+        if(ticksPassed >= tickLimit)
+        {
+            StopCoroutine("Tick");
+            StartCoroutine(FinishGame());
         }
     }
 
@@ -181,7 +190,7 @@ public class Map : MonoBehaviour
     public bool isMineFieldNearby(Vector2Int position, int owner)
     {
         if (position == getStartPosition(owner)) return true;
-        
+
         if (getFlower(position + Vector2Int.right)?.owner == owner) return true;
         if (getFlower(position + Vector2Int.left)?.owner == owner) return true;
         if (getFlower(position + Vector2Int.up)?.owner == owner) return true;
@@ -253,7 +262,7 @@ public class Map : MonoBehaviour
         newFlower.position = position;
         newFlower.sourcePosition2d = position;
         newFlower.sourcePosition3d = worldPosition;
-        newFlower.creationTime = currentTime;
+        newFlower.creationTime = ticksPassed;
         newFlower.creationTimeInSeconds = Time.time;
         newFlower.init(previousFlower);
         flowers[position.x, position.y] = newFlower;
@@ -286,7 +295,7 @@ public class Map : MonoBehaviour
         var parasite = newParasiteObject.GetComponent<Parasite>();
         parasite.owner = owner;
         parasite.startPosition = position;
-        parasite.creationTime = currentTime;
+        parasite.creationTime = ticksPassed;
         parasite.creationTimeInSeconds = Time.time;
         parasites.Add(parasite);
 
@@ -343,5 +352,19 @@ public class Map : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(sound, position);
         return true;
+    }
+    IEnumerator FinishGame()
+    {
+        Time.timeScale = 0;
+
+        int winner = 0;
+        if (playerPoints[0] > playerPoints[1])
+            winner = 1;
+        else if (playerPoints[0] < playerPoints[1])
+            winner = 2;
+        victoryWindow.GetComponent<VictoryWindow>().SetWinner(winner);
+        yield return new WaitForSecondsRealtime(2);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

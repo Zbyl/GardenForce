@@ -31,6 +31,14 @@ public class TextSetter : MonoBehaviour
                     lastValue = Map.instance.playerPoints[1];
                 }
                 break;
+            case 2:
+                if (lastValue != Map.instance.ticksPassed)
+                {
+                    text.text = (Map.instance.tickLimit - 
+                        Map.instance.ticksPassed).ToString();
+                    lastValue = Map.instance.ticksPassed;
+                }
+                break;
         }
     }
 }
