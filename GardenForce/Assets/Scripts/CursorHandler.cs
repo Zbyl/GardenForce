@@ -9,9 +9,13 @@ public class CursorHandler : MonoBehaviour
 
     public float inputDelay;                ///< Delay between presses of one button.
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
+    public ParticleSystem particleHasSeed;
 
     public GameObject normalCursor;
     public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
+    public const int maxSeeds = 5;
+    int seeds = 0;
+    int lastTimeSeedReceive = 0;
 
     private Map map { get { return Map.instance; } }
 
@@ -83,13 +87,46 @@ public class CursorHandler : MonoBehaviour
         }
     }
 
+    public void logicUpdate(int currentTime)
+    {
+        if (currentTime - lastTimeSeedReceive > 10)
+        {
+            if (seeds < maxSeeds)
+            {
+                if (seeds == 0)
+                {
+                    var main = particleHasSeed.main;
+                    main.loop = true;
+                    particleHasSeed.Play();
+                }
+                seeds++;
+
+                // Increase number of pulses, but i think it looks werid
+                //var emission = particleHasSeed.emission;
+                //emission.rateOverTime = seeds;
+            }
+
+            lastTimeSeedReceive = currentTime;
+        }
+    }
+
     void plantFlower(GameObject flowerPrefab)
     {
+        if (seeds <= 0)
+            return;
+
         var flower = map.plantFlower(mapPosition, flowerPrefab, playerNumber);
         if (flower != null)
         {
             //Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
             particleBurst.Play();
+            seeds--;
+
+            if (seeds <= 0)
+            {
+                var main = particleHasSeed.main;
+                main.loop = false;
+            }
         }
     }
 
