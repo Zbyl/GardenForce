@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class VictoryWindow : MonoBehaviour
 {
+    public AudioSource[] sounds;
     readonly Color32[] textColors = {
         new Color32(224, 214, 184, 255),
         new Color32(217, 140, 62, 255),
@@ -21,5 +22,7 @@ public class VictoryWindow : MonoBehaviour
         text.color = textColors[winner];
         text.text = victoryTexts[winner];
         gameObject.SetActive(true);
+        if (winner > 0)
+            sounds[winner - 1].Play();
     }
 }
