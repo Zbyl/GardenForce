@@ -67,7 +67,9 @@ public class Map : MonoBehaviour
 
     void instantiateTile(Vector2Int position, GameObject prefab, GameObject tileParent)
     {
-        Vector3 pos = mapPositionToWorldPosition(position, tileZ);
+        Vector3 pos = mapPositionToWorldPosition(
+            position, prefab.transform.position.z
+        );
         var tile = Instantiate(prefab, pos, Quaternion.identity);
         tile.transform.SetParent(tileParent.transform);
     }
