@@ -10,6 +10,8 @@ public class CursorHandler : MonoBehaviour
     public float inputDelay;                ///< Delay between presses of one button.
     public ParticleSystem particleBurst;    ///< Played when plant is being planted.
     public ParticleSystem particleHasSeed;
+    public SpriteRenderer spriteSeedCounter;
+    public Sprite[] spriteSeedImages;
 
     public GameObject normalCursor;
     public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
