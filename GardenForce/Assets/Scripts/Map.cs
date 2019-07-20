@@ -28,6 +28,11 @@ public class Map : MonoBehaviour
     public readonly float flowerZ = -1;
     public readonly float cursorZ = -2;
 
+    readonly Color[] playerColor = {
+        new Color(128, 0, 0),
+        new Color(0, 0, 250)
+    };
+
     int currentTime = 0;
 
     public Map()
@@ -182,6 +187,11 @@ public class Map : MonoBehaviour
         newFlower.creationTimeInSeconds = Time.time;
         newFlower.init(previousFlower);
         flowers[position.x, position.y] = newFlower;
+
+        Transform newFlowerColor = newFlowerObject.transform.GetChild(0).GetChild(1);
+        var colorComponent = newFlowerColor.GetComponent<SpriteRenderer>();
+
+        colorComponent.color = playerColor[owner - 1];
 
         if (previousFlower != null)
         {
