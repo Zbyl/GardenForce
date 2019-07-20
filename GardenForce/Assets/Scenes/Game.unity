@@ -346,11 +346,11 @@ MonoBehaviour:
     type: 3}
   attackFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
     type: 3}
-  defenseFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
+  defenseFlowerPrefab: {fileID: 3436037028164340223, guid: 1943f9e3c49bb2a3eb2eefdbeedd1543,
     type: 3}
   colonizeFlowerPrefab: {fileID: 7884262249713015480, guid: 5fc7663b9ef82ff4eb1b0d8c01f6a9a1,
     type: 3}
-  growFlowerPrefab: {fileID: 7884262249713015480, guid: 54ff8d5833e28bc46ba29aec70c6edc8,
+  growFlowerPrefab: {fileID: 7747068868520176691, guid: fb4bef90b884994b4868fd6d43e47ec9,
     type: 3}
   fadeOutPrefab: {fileID: 6128730739379415462, guid: b73770e18472b7b40877f3758ca8b1f0,
     type: 3}
