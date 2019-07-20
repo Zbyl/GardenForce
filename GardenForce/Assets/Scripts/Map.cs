@@ -151,6 +151,13 @@ public class Map : MonoBehaviour
         return Vector2Int.zero;
     }
 
+    public bool isMineFieldHere(Vector2Int position, int owner)
+    {
+        if (position == getStartPosition(owner)) return true;
+        if (getFlower(position)?.owner == owner) return true;
+        return false;
+    }
+
     public bool isMineFieldNearby(Vector2Int position, int owner)
     {
         if (position == getStartPosition(owner)) return true;
@@ -240,7 +247,7 @@ public class Map : MonoBehaviour
 
     public Parasite createParasite(Vector2Int position, int owner)
     {
-        if (!isMineFieldNearby(position, owner))
+        if (!isMineFieldHere(position, owner) && !isMineFieldNearby(position, owner))
             return null;
 
         if (!isPositionInsideMap(position))

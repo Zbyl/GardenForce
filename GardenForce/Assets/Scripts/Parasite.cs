@@ -38,6 +38,9 @@ public class Parasite : MonoBehaviour
         var position3dCenter = map.mapPositionToWorldPosition(new Vector2(startPosition.x + 0.5f, startPosition.y + 0.5f), map.parasiteZ);
         transform.position = position3dCenter;
         transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
+
+        // Remove what's under parasite.
+        map.removeFlower(startPosition);
     }
 
     // Update is called once per frame

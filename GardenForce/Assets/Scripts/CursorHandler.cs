@@ -65,9 +65,12 @@ public class CursorHandler : MonoBehaviour
         var canSpawnParasite = (Time.time - lastTimeParasiteSpawned > parasiteSpawnDelay);
         if (getButton("Parasite") && canSpawnParasite)
         {
-            canSpawnParasite = false;
-            lastTimeParasiteSpawned = Time.time;
-            map.createParasite(mapPosition, playerNumber);
+            var parasite = map.createParasite(mapPosition, playerNumber);
+            if (parasite != null)
+            {
+                canSpawnParasite = false;
+                lastTimeParasiteSpawned = Time.time;
+            }
         }
         parasiteIndicator.SetActive(canSpawnParasite);
 
