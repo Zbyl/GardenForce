@@ -35,6 +35,11 @@ public class VoxelMap : MonoBehaviour
 		chunks[0].Clean(40 * (39 - position.y) + position.x);
 	}
 
+	public void Refresh()
+	{
+		chunks[0].Refresh();
+	}
+
     private void Awake()
     {
         halfSize = size * 0.5f;

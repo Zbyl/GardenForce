@@ -175,6 +175,31 @@ public class Map : MonoBehaviour
                     playRandomSound(secondLeadSounds);
             }
         }
+
+        for (int w = 0; w < width; w++)
+        {
+            for (int h = 0; h < height; h++)
+            {
+                var flower = flowers[w,h];
+                if (flower == null)
+                {
+                    teritoryPlayerOne.SetDeactive(new Vector2Int(w, h));
+                    teritoryPlayerTwo.SetDeactive(new Vector2Int(w, h));
+                }
+                else if (flower.owner == 1)
+                {
+                    teritoryPlayerOne.SetActive(flower.position);
+                    teritoryPlayerTwo.SetDeactive(new Vector2Int(w, h));
+                }
+                else if (flower.owner == 2)
+                {
+                    teritoryPlayerOne.SetDeactive(new Vector2Int(w, h));
+                    teritoryPlayerTwo.SetActive(flower.position);
+                }
+            }
+        }
+		teritoryPlayerOne.Refresh();
+		teritoryPlayerTwo.Refresh();
     }
 
     /// Returns flower in given map position, or null.
@@ -293,17 +318,8 @@ public class Map : MonoBehaviour
 
         colorComponent.color = playerColor[owner - 1];
 
-        if (newFlower.owner == 1)
-            teritoryPlayerOne.SetActive(newFlower.position);
-        if (newFlower.owner == 2)
-            teritoryPlayerTwo.SetActive(newFlower.position);
-
         if (previousFlower != null)
         {
-            if (newFlower.owner == 1)
-                teritoryPlayerOne.SetDeactive(previousFlower.position);
-            if (newFlower.owner == 2)
-                teritoryPlayerTwo.SetDeactive(previousFlower.position);
             Destroy(previousFlower.gameObject);
         }
 

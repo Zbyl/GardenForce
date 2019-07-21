@@ -81,7 +81,6 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   creationTime: 0
   creationTimeInSeconds: 0
-  self_destruct: 0
   sourcePosition2d: {x: 0, y: 0}
   sourcePosition3d: {x: 0, y: 0, z: 0}
   travelSpeed: 1
@@ -111,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &829939507607850642
 Transform:
   m_ObjectHideFlags: 0

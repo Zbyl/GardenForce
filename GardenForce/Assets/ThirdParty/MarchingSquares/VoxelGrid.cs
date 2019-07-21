@@ -56,7 +56,7 @@ public class VoxelGrid : MonoBehaviour {
 		voxels[i] = new Voxel(x, y, voxelSize);
 	}
 
-	private void Refresh () {
+	public void Refresh () {
 		SetVoxelColors();
 		Triangulate();
 	}
@@ -265,11 +265,9 @@ public class VoxelGrid : MonoBehaviour {
 
 	public void Apply (int i) {
 		voxels[i].state = true;
-		Refresh();
 	}
 
 	public void Clean (int i) {
 		voxels[i].state = false;
-		Refresh();
 	}
 }
