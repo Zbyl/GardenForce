@@ -18,6 +18,7 @@ public class CursorHandler : MonoBehaviour
     public GameObject forbiddenCursor;    ///< Cursor used when player cannot build on given field.
     public const int maxSeeds = 5;
     public int seeds { get; private set; } = 2;
+    public int ticksForSeed = 20;
 
     int lastTimeSeedReceive = 0;
 
@@ -114,7 +115,7 @@ public class CursorHandler : MonoBehaviour
     {
         if (seeds < maxSeeds)
         {
-            if (currentTime - lastTimeSeedReceive > 20)
+            if (currentTime - lastTimeSeedReceive > ticksForSeed)
             {
                 setSeedsNumber(seeds + 1);
                 lastTimeSeedReceive = currentTime;
