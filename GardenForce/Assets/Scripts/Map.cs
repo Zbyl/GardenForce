@@ -51,7 +51,7 @@ public class Map : MonoBehaviour
     public readonly int[] playerPoints = new int[2];
 
 
-    public Map()
+    void Awake()
     {
         instance = this;
     }
