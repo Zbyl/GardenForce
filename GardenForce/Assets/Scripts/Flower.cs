@@ -30,12 +30,14 @@ public class Flower : MonoBehaviour
     public AudioClip[] createSounds = { };  /// Sounds played when flower is created.
 
     private Transform stolenModel;         /// Model of the previous flower - will be faded out.
+    internal bool isInFinalPosition;
 
     protected Map map { get { return Map.instance; } }
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        isInFinalPosition = true;
     }
 
     void Update()
@@ -70,11 +72,13 @@ public class Flower : MonoBehaviour
 
         if (travelFraction < 1.0f)
         {
+            isInFinalPosition = false;
             travelFraction = Mathf.Sqrt(travelFraction);
             transform.position = sourcePosition3d * (1 - travelFraction) + destPos * travelFraction;
         }
         else
         {
+            isInFinalPosition = true;
             transform.position = destPos;
         }
     }

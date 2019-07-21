@@ -181,7 +181,7 @@ public class Map : MonoBehaviour
             for (int h = 0; h < height; h++)
             {
                 var flower = flowers[w,h];
-                if (flower == null)
+                if ((flower == null) || !flower.isInFinalPosition)
                 {
                     teritoryPlayerOne.SetDeactive(new Vector2Int(w, h));
                     teritoryPlayerTwo.SetDeactive(new Vector2Int(w, h));

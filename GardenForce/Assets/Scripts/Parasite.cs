@@ -45,9 +45,16 @@ public class Parasite : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
 
         // Remove what's under parasite.
-        map.removeFlower(startPosition);
+        tryRemoveFlower(startPosition);
 
         lastWalkSound = Time.time;
+    }
+
+    void tryRemoveFlower(Vector2Int pos)
+    {
+        var flower = map.getFlower(pos);
+        if (flower && (flower.type != Flower.FlowerType.protect))
+            map.removeFlower(pos);
     }
 
     // Update is called once per frame
@@ -77,7 +84,7 @@ public class Parasite : MonoBehaviour
         if (map.isPositionInsideMap(mapPosition))
         {
             // Remove what's under parasite.
-            map.removeFlower(mapPosition);
+            tryRemoveFlower(mapPosition);
         }
         else
         {
@@ -94,6 +101,7 @@ public class Parasite : MonoBehaviour
         map.parasites.Remove(this);
 
         // Instantiate AttackFlower.
+        map.removeFlower(mapPosition);  // Force it - even if tree is involved.
         var flower = map.instantiateFlower(mapPosition, map.attackFlowerPrefab, owner) as AttackFlower;
         if (flower == null)
             return;
