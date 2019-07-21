@@ -232,7 +232,7 @@ public class VoxelGrid : MonoBehaviour {
 	
 	private void SetVoxelColors () {
 		for (int i = 0; i < voxels.Length; i++) {
-			voxelMaterials[i].color = voxels[i].state ? new Color(128, 0, 0, 128) : Color.black;
+			//voxelMaterials[i].color = voxels[i].state ? new Color(128, 0, 0, 128) : Color.black;
 		}
 	}
 

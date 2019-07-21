@@ -490,7 +490,7 @@ MonoBehaviour:
   size: 26.1
   voxelResolution: 40
   chunkResolution: 1
-  voxelGridPrefab: {fileID: 11400000, guid: 336f31b3fb8e941b398b8a96aae18062, type: 3}
+  voxelGridPrefab: {fileID: 11400000, guid: fd4f90ec605a7d6eebc3edd9089fde0b, type: 3}
 --- !u!4 &348957618
 Transform:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348957616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.799999, y: -12.9, z: -1.67}
+  m_LocalPosition: {x: 12.8, y: -12.9, z: -1.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4064,7 +4064,7 @@ MonoBehaviour:
   size: 26.1
   voxelResolution: 40
   chunkResolution: 1
-  voxelGridPrefab: {fileID: 11400000, guid: 336f31b3fb8e941b398b8a96aae18062, type: 3}
+  voxelGridPrefab: {fileID: 11400000, guid: e4c43c135e0276a6b9ed43604e60ac9d, type: 3}
 --- !u!4 &1867662913
 Transform:
   m_ObjectHideFlags: 0
