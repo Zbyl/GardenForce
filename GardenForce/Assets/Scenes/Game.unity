@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb9418d0cc024695928b083ccdb9813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2
+  size: 26.1
   voxelResolution: 40
   chunkResolution: 1
   voxelGridPrefab: {fileID: 11400000, guid: 336f31b3fb8e941b398b8a96aae18062, type: 3}
@@ -499,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348957616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.799999, y: -6.3999996, z: -10}
+  m_LocalPosition: {x: 12.799999, y: -12.9, z: -1.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1541,7 +1541,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 199c54a9f881c084ab90bccc3fb0f852, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0dc1f2f9b91c73a43b262d4ef1104c7f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.661
   m_Pitch: 1
@@ -2256,7 +2256,7 @@ PrefabInstance:
     - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
         type: 3}
       propertyPath: tickLimit
-      value: 600
+      value: 1800
       objectReference: {fileID: 0}
     - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
         type: 3}
@@ -3908,31 +3908,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor2
       objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: playerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: mapOrigin
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: inputDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: particleHasSeed
-      value: 
-      objectReference: {fileID: 869402116}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: parasiteIndicator
-      value: 
-      objectReference: {fileID: 1464377884}
     - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.3039922
@@ -4000,6 +3975,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: mapOrigin
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: inputDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: particleHasSeed
+      value: 
+      objectReference: {fileID: 869402116}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: parasiteIndicator
+      value: 
+      objectReference: {fileID: 1464377884}
     - target: {fileID: 2880946579235719671, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_Color.r
@@ -4061,7 +4061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb9418d0cc024695928b083ccdb9813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2
+  size: 26.1
   voxelResolution: 40
   chunkResolution: 1
   voxelGridPrefab: {fileID: 11400000, guid: 336f31b3fb8e941b398b8a96aae18062, type: 3}
@@ -4073,7 +4073,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867662911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.799999, y: -6.3999996, z: -10}
+  m_LocalPosition: {x: 12.799999, y: -12.9, z: -1.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4548,11 +4548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor1
       objectReference: {fileID: 0}
-    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
-        type: 3}
-      propertyPath: parasiteIndicator
-      value: 
-      objectReference: {fileID: 1715963059}
     - target: {fileID: 2880946578450411679, guid: b5cad86af54887a4d8032535b0ef4338,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4608,6 +4603,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: parasiteIndicator
+      value: 
+      objectReference: {fileID: 1715963059}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
 --- !u!1001 &6140650460984638367
