@@ -88,7 +88,7 @@ public class CursorHandler : MonoBehaviour
 
         if (getButton("PlantC"))
         {
-            plantFlower(map.colonizeFlowerPrefab);
+            plantFlower(map.attackFlowerPrefab);
         }
 
         if (getButton("PlantD"))
