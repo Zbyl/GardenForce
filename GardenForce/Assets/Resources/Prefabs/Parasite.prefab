@@ -129,7 +129,7 @@ MonoBehaviour:
   minAngleChange: 15
   maxAngleChange: 45
   createSounds:
-  - {fileID: 8300000, guid: 1334c820d90c11b4fab2f5d077a872a5, type: 3}
+  - {fileID: 8300000, guid: 78461512282e3ed4186386b75d919f8e, type: 3}
   walkSounds:
   - {fileID: 8300000, guid: 1334c820d90c11b4fab2f5d077a872a5, type: 3}
   explodeSounds:
