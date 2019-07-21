@@ -78,12 +78,12 @@ public class CursorHandler : MonoBehaviour
 
         if (getButton("PlantA"))
         {
-            plantFlower(map.attackFlowerPrefab);
+            plantFlower(map.growFlowerPrefab);
         }
 
         if (getButton("PlantB"))
         {
-            plantFlower(map.defenseFlowerPrefab);
+            plantFlower(map.colonizeFlowerPrefab);
         }
 
         if (getButton("PlantC"))
@@ -93,7 +93,7 @@ public class CursorHandler : MonoBehaviour
 
         if (getButton("PlantD"))
         {
-            plantFlower(map.growFlowerPrefab);
+            plantFlower(map.defenseFlowerPrefab);
         }
 
         this.transform.position = map.mapPositionToWorldPosition(this.mapPosition, map.cursorZ);
