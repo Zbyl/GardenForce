@@ -170,6 +170,8 @@ MonoBehaviour:
   createSounds:
   - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
   - {fileID: 8300000, guid: ee3a469c1d36b2e7695868c7fd6f5c6c, type: 3}
+  - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
+  - {fileID: 8300000, guid: efe2b051f4edf8481aaa21d6e0d29ad0, type: 3}
   canSpawn: 1
   colonizationStart: 2
   colonizationDelay: 1

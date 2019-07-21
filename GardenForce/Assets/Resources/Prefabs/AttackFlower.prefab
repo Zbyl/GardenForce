@@ -168,8 +168,7 @@ MonoBehaviour:
   destroyFadeOutSeconds: 0.3
   previousFadeOutSeconds: 1
   createSounds:
-  - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
-  - {fileID: 8300000, guid: efe2b051f4edf8481aaa21d6e0d29ad0, type: 3}
+  - {fileID: 8300000, guid: 502f758e68c609d44892373ab1eeb35f, type: 3}
   canSpawn: 1
   spawnAfterDeath: {fileID: 0}
   life_ticks: 5
