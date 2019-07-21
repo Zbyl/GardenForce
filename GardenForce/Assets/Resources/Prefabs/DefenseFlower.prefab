@@ -137,6 +137,7 @@ MonoBehaviour:
   previousFadeOutSeconds: 0
   createSounds:
   - {fileID: 8300000, guid: 653b384537346ba43b43c1d97c8f2b63, type: 3}
+  - {fileID: 8300000, guid: 8a0654624a3d3c09eb356e3ee5ff7cd8, type: 3}
 --- !u!1 &4465727331234089486
 GameObject:
   m_ObjectHideFlags: 0

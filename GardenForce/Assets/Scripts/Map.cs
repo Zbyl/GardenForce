@@ -342,7 +342,7 @@ public class Map : MonoBehaviour
         return mapUnits * tileSize;
     }
 
-    public static bool playRandomSound(AudioClip[] sounds, Vector3 position)
+    public bool playRandomSound(AudioClip[] sounds)
     {
         if (sounds.Length == 0)
             return false;
@@ -352,7 +352,7 @@ public class Map : MonoBehaviour
         if (sound == null)
             return false;
 
-        AudioSource.PlayClipAtPoint(sound, position);
+        AudioSource.PlayClipAtPoint(sound, camera.transform.position);
         return true;
     }
     IEnumerator FinishGame()
