@@ -13,6 +13,8 @@ public class Map : MonoBehaviour
     public GameObject playerTwoGameObject;
     CursorHandler playerOne;
     CursorHandler playerTwo;
+    public VoxelMap teritoryPlayerOne;
+    public VoxelMap teritoryPlayerTwo;
 
     public GameObject[] dirtPrefabs;
     public GameObject[] rockPrefabs;
@@ -291,8 +293,17 @@ public class Map : MonoBehaviour
 
         colorComponent.color = playerColor[owner - 1];
 
+        if (newFlower.owner == 1)
+            teritoryPlayerOne.SetActive(newFlower.position);
+        if (newFlower.owner == 2)
+            teritoryPlayerTwo.SetActive(newFlower.position);
+
         if (previousFlower != null)
         {
+            if (newFlower.owner == 1)
+                teritoryPlayerOne.SetDeactive(previousFlower.position);
+            if (newFlower.owner == 2)
+                teritoryPlayerTwo.SetDeactive(previousFlower.position);
             Destroy(previousFlower.gameObject);
         }
 
