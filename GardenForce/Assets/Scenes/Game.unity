@@ -2256,7 +2256,7 @@ PrefabInstance:
     - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
         type: 3}
       propertyPath: tickLimit
-      value: 1800
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
         type: 3}
