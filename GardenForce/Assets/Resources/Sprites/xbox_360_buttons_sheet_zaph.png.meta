@@ -1,0 +1,424 @@
+fileFormatVersion: 2
+guid: 4f3d453afd029eb49926338613ef62a9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6799273853472567390
+    second: xbox_360_buttons_sheet_zaph_0
+  - first:
+      213: -741202193043221643
+    second: xbox_360_buttons_sheet_zaph_3
+  - first:
+      213: 8252648232773470610
+    second: xbox_360_buttons_sheet_zaph_4
+  - first:
+      213: 6305601103139087135
+    second: xbox_360_buttons_sheet_zaph_5
+  - first:
+      213: -7179976555391530721
+    second: xbox_360_buttons_sheet_zaph_6
+  - first:
+      213: -440567346353665995
+    second: xbox_360_buttons_sheet_zaph_7
+  - first:
+      213: 3430854840007589128
+    second: xbox_360_buttons_sheet_zaph_8
+  - first:
+      213: 2016476158999159226
+    second: xbox_360_buttons_sheet_zaph_9
+  - first:
+      213: 475438157368944671
+    second: xbox_360_buttons_sheet_zaph_10
+  - first:
+      213: -4809375655367299676
+    second: xbox_360_buttons_sheet_zaph_11
+  - first:
+      213: -795617704983223255
+    second: xbox_360_buttons_sheet_zaph_12
+  - first:
+      213: -7232745754708978757
+    second: xbox_360_buttons_sheet_zaph_13
+  - first:
+      213: -3858780873032254188
+    second: xbox_360_buttons_sheet_zaph_14
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 143
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51afebcfdc7970d40aca65b3f45eb441
+      internalID: -6799273853472567390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 94
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dfad9eaa90800e4494f96d1e3b8c405
+      internalID: -741202193043221643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 95
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766a8d3c0f337fc4b899b409dfaeb1c6
+      internalID: 8252648232773470610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_5
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 95
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb2afec6da8bdb4d829804106f010a8
+      internalID: 6305601103139087135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_6
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 95
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eec4ee34218d0240a57152f377ac685
+      internalID: -7179976555391530721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_7
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 63
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ffa7b3baeb2b6749bc546fc5a06a4f5
+      internalID: -440567346353665995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 63
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5679ef28b9c244f4589960826cbd79f7
+      internalID: 3430854840007589128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 63
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6798dec8d30b57d41a866511ab95bc6c
+      internalID: 2016476158999159226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_10
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 63
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae91e7e6870c732468c28140d11cd035
+      internalID: 475438157368944671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_11
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 15
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 852c54ea1fd98b945b6b14fc050e17d8
+      internalID: -4809375655367299676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_12
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 15
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafe78267fb151645b18ecdb8425b06c
+      internalID: -795617704983223255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_13
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 15
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02bd8d4261fc0d74ca7424ef2401bf32
+      internalID: -7232745754708978757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xbox_360_buttons_sheet_zaph_14
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 15
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815dade38163c7f40875b6958d8c45f6
+      internalID: -3858780873032254188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4f9e3c8604da0334fbd6be538c010fea
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
