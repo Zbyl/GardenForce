@@ -128,3 +128,9 @@ MonoBehaviour:
   changeDirectionInterval: 7
   minAngleChange: 15
   maxAngleChange: 45
+  createSounds: []
+  walkSounds:
+  - {fileID: 8300000, guid: 1334c820d90c11b4fab2f5d077a872a5, type: 3}
+  explodeSounds:
+  - {fileID: 8300000, guid: 502f758e68c609d44892373ab1eeb35f, type: 3}
+  walkSoundDelay: 0.2

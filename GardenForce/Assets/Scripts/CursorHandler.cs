@@ -69,6 +69,7 @@ public class CursorHandler : MonoBehaviour
             var parasite = map.createParasite(mapPosition, playerNumber);
             if (parasite != null)
             {
+                map.playRandomSound(parasite.createSounds);
                 canSpawnParasite = false;
                 lastTimeParasiteSpawned = Time.time;
             }

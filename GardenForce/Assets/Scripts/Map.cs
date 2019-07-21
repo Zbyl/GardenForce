@@ -29,6 +29,10 @@ public class Map : MonoBehaviour
 
     public GameObject victoryWindow;
 
+    private int playerInTheLead;
+    public AudioClip[] firstLeadSounds;     /// Sound played when first player takes a lead.
+    public AudioClip[] secondLeadSounds;    /// Sound played when second player takes a lead.
+
     public Flower[,] flowers { get; private set; }
     public int[,] ground { get; private set; }  // 0 - dirt, 1 - rock
     internal List<Parasite> parasites = new List<Parasite>();
@@ -155,6 +159,19 @@ public class Map : MonoBehaviour
         {
             StopCoroutine("Tick");
             StartCoroutine(FinishGame());
+        }
+
+        if (playerPoints[0] != playerPoints[1])
+        {
+            var newPlayerInTheLead = playerPoints[0] > playerPoints[1] ? 1 : 2;
+            if (newPlayerInTheLead != playerInTheLead)
+            {
+                playerInTheLead = newPlayerInTheLead;
+                if (playerInTheLead == 1)
+                    playRandomSound(firstLeadSounds);
+                else
+                    playRandomSound(secondLeadSounds);
+            }
         }
     }
 

@@ -71,6 +71,12 @@ MonoBehaviour:
     type: 3}
   fadeOutPrefab: {fileID: 6128730739379415462, guid: b73770e18472b7b40877f3758ca8b1f0,
     type: 3}
+  victoryWindow: {fileID: 0}
+  firstLeadSounds:
+  - {fileID: 8300000, guid: 7946f9c01686728c5aa1a348d2ed60e9, type: 3}
+  secondLeadSounds:
+  - {fileID: 8300000, guid: 237bbda4ce664a892865e5bd6b358ee5, type: 3}
+  tickLimit: 0
   tileZ: 0
   flowerZ: -1
   parasiteZ: -3

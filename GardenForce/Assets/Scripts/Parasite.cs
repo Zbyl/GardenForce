@@ -9,6 +9,11 @@ public class Parasite : MonoBehaviour
     public int changeDirectionInterval;     /// How often does the parasite change direction (in ticks).
     public float minAngleChange;            /// Minimal direction change (in degrees).
     public float maxAngleChange;            /// Minimal direction change (in degrees).
+    public AudioClip[] createSounds;        /// Sound played when parasite is created.
+    public AudioClip[] walkSounds;          /// Sound played when parasite is created.
+    public AudioClip[] explodeSounds;       /// Sound played when parasite explodes.
+    private float lastWalkSound;            /// When we played walk sound last (in seconds).
+    public float walkSoundDelay;            /// How often to play walk sound (in seconds).
 
     internal Vector2Int startPosition;
     internal int owner;
@@ -41,12 +46,18 @@ public class Parasite : MonoBehaviour
 
         // Remove what's under parasite.
         map.removeFlower(startPosition);
+
+        lastWalkSound = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.time - lastWalkSound > walkSoundDelay)
+        {
+            lastWalkSound = Time.time;
+            map.playRandomSound(walkSounds);
+        }
     }
 
     public virtual void logicUpdate(int currentTime)
@@ -87,6 +98,7 @@ public class Parasite : MonoBehaviour
         if (flower == null)
             return;
         flower.spawnAfterDeath = map.idleFlowerPrefab;
+        map.playRandomSound(explodeSounds);
     }
 
     private void fluctuateAngle()
