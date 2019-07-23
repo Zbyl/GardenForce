@@ -3933,6 +3933,11 @@ PrefabInstance:
       propertyPath: parasiteIndicator
       value: 
       objectReference: {fileID: 1464377884}
+    - target: {fileID: 2880946578450411678, guid: b5cad86af54887a4d8032535b0ef4338,
+        type: 3}
+      propertyPath: parasiteSpawnDelay
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 999066718, guid: b5cad86af54887a4d8032535b0ef4338, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.3039922
