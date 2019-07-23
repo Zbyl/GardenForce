@@ -90,10 +90,17 @@ public class Map : MonoBehaviour
         {
             for (var j = 0; j < height; j++)
             {
+                var mapPosition = new Vector2Int(i, j);
                 var placeRock = Random.value < rockProbability;
+                // Prevent placing rocks on the start positions.
+                for (var p = 1; p <= 2; ++p)
+                {
+                    if (mapPosition == getStartPosition(i))
+                        placeRock = false;
+                }
+
                 ground[i, j] = placeRock ? 1 : 0;
 
-                var mapPosition = new Vector2Int(i, j);
                 instantiateTile(mapPosition, randomPrefab(dirtPrefabs), tileParent);
                 if (placeRock)
                     instantiateTile(mapPosition, randomPrefab(rockPrefabs), tileParent);
