@@ -4952,7 +4952,8 @@ MonoBehaviour:
   - {fileID: -3928540349575310258, guid: cf3fbefd8212e1f8b88bfed8afc26e4c, type: 3}
   normalCursor: {fileID: 2880946579235719669}
   forbiddenCursor: {fileID: 4917979288140259810}
-  parasiteSpawnDelay: 5
+  ticksForSeed: 20
+  parasiteSpawnDelay: 100
 --- !u!1 &2880946579235719669
 GameObject:
   m_ObjectHideFlags: 0

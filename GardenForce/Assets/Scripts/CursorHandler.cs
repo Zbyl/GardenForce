@@ -22,8 +22,10 @@ public class CursorHandler : MonoBehaviour
 
     int lastTimeSeedReceive = 0;
 
-    public float parasiteSpawnDelay;  /// Delay between successive parasite spawns (in seconds).
-    float lastTimeParasiteSpawned;  /// Last time a parasite was spawned.
+    public int parasiteSpawnDelay;  /// Delay between successive parasite spawns (in ticks).
+    bool canSpawnParasite = false;
+    int lastTimeParasiteReleased;  /// Last time a parasite was spawned.
+    bool parasiteReleased = false;
 
     private Map map { get { return Map.instance; } }
 
@@ -64,7 +66,6 @@ public class CursorHandler : MonoBehaviour
             moveCursor(0, 1);
         }
 
-        var canSpawnParasite = (Time.time - lastTimeParasiteSpawned > parasiteSpawnDelay);
         if (getButton("Parasite") && canSpawnParasite)
         {
             var parasite = map.createParasite(mapPosition, playerNumber);
@@ -72,7 +73,7 @@ public class CursorHandler : MonoBehaviour
             {
                 map.playRandomSound(parasite.createSounds);
                 canSpawnParasite = false;
-                lastTimeParasiteSpawned = Time.time;
+                parasiteReleased = true;
             }
         }
         parasiteIndicator.SetActive(canSpawnParasite);
@@ -125,6 +126,18 @@ public class CursorHandler : MonoBehaviour
         else
         {
             lastTimeSeedReceive = currentTime;
+        }
+
+        if (currentTime - lastTimeParasiteReleased > parasiteSpawnDelay)
+        {
+            canSpawnParasite = true;
+            lastTimeParasiteReleased = currentTime;
+        }
+
+        if (parasiteReleased)
+        {
+            canSpawnParasite = parasiteReleased = false;
+            lastTimeParasiteReleased = currentTime;
         }
     }
 

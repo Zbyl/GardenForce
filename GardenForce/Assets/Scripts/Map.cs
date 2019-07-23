@@ -95,7 +95,7 @@ public class Map : MonoBehaviour
                 // Prevent placing rocks on the start positions.
                 for (var p = 1; p <= 2; ++p)
                 {
-                    if (mapPosition == getStartPosition(i))
+                    if (mapPosition == getStartPosition(p))
                         placeRock = false;
                 }
 
