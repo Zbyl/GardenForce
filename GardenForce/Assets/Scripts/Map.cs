@@ -90,8 +90,13 @@ public class Map : MonoBehaviour
         {
             for (var j = 0; j < height; j++)
             {
-                var placeRock = Random.value < rockProbability;
-                ground[i, j] = placeRock ? 1 : 0;
+                bool placeRock = false;
+                if (i > 1 && i < width - 2 &&
+                    j > 1 && j < height - 2)
+                    {
+                        placeRock = Random.value < rockProbability;
+                        ground[i, j] = placeRock ? 1 : 0;
+                    }
 
                 var mapPosition = new Vector2Int(i, j);
                 instantiateTile(mapPosition, randomPrefab(dirtPrefabs), tileParent);
