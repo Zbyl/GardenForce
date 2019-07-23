@@ -92,5 +92,7 @@ MonoBehaviour:
     type: 3}
   spriteDim: {fileID: -1545581547015726966, guid: 7f076f28cb06dc741bf81f95e099e6b0,
     type: 3}
+  colorLit: {r: 1, g: 1, b: 1, a: 1}
+  colorDim: {r: 1, g: 1, b: 1, a: 0.39215687}
   minSeedForLit: 1
   player: {fileID: 0}

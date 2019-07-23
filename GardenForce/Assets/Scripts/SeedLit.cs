@@ -7,6 +7,8 @@ public class SeedLit : MonoBehaviour
 {
     public Sprite spriteLit;
     public Sprite spriteDim;
+    public Color colorLit;
+    public Color colorDim;
 
     public int minSeedForLit;
     public CursorHandler player;
@@ -20,6 +22,7 @@ public class SeedLit : MonoBehaviour
             if (image != null)
             {
                 image.sprite = spriteLit;
+                image.color = colorLit;
             }
         }
         else
@@ -28,6 +31,7 @@ public class SeedLit : MonoBehaviour
             if (image != null)
             {
                 image.sprite = spriteDim;
+                image.color = colorDim;
             }
         }
     }
