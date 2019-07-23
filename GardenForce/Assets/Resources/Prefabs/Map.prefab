@@ -46,6 +46,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   playerOneGameObject: {fileID: 0}
   playerTwoGameObject: {fileID: 0}
+  teritoryPlayerOne: {fileID: 0}
+  teritoryPlayerTwo: {fileID: 0}
   dirtPrefabs:
   - {fileID: 4026654398806174209, guid: e0802e9ae0df9411e989ff12486ae83e, type: 3}
   - {fileID: 4026654398806174209, guid: 0c0b6c0c00fa52d49817913be7a4fac1, type: 3}
@@ -76,7 +78,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7946f9c01686728c5aa1a348d2ed60e9, type: 3}
   secondLeadSounds:
   - {fileID: 8300000, guid: 237bbda4ce664a892865e5bd6b358ee5, type: 3}
-  tickLimit: 0
+  tickLimit: 900
   tileZ: 0
   flowerZ: -1
   parasiteZ: -3

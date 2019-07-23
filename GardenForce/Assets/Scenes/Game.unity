@@ -2255,11 +2255,6 @@ PrefabInstance:
       objectReference: {fileID: 745791289}
     - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
         type: 3}
-      propertyPath: tickLimit
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 8080754433598507858, guid: 28070c9187d0f89459052b626fc2bb55,
-        type: 3}
       propertyPath: teritoryPlayerOne
       value: 
       objectReference: {fileID: 348957617}
@@ -2412,6 +2407,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 577164862}
+    - target: {fileID: 6779981211404087564, guid: 66958c01773a88c93ab7871a0734dbef,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66958c01773a88c93ab7871a0734dbef, type: 3}
 --- !u!1 &1178238356
@@ -3249,7 +3249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238, y: 0.99999}
+  m_AnchoredPosition: {x: 218, y: 0.99999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455930146

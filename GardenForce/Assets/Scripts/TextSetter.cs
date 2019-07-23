@@ -34,8 +34,8 @@ public class TextSetter : MonoBehaviour
             case 2:
                 if (lastValue != Map.instance.ticksPassed)
                 {
-                    text.text = (Map.instance.tickLimit -
-                        Map.instance.ticksPassed).ToString();
+                    var ticksLeft = Map.instance.tickLimit - Map.instance.ticksPassed;
+                    text.text = (ticksLeft / 10).ToString();
                     lastValue = Map.instance.ticksPassed;
                 }
                 break;
