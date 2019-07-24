@@ -7,10 +7,17 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     public Button firstButton;
+    public Toggle kidsModeToggle;
+    public GameObject kidsModeIndicator;
     GameObject menuPanel;
     void Awake()
     {
         menuPanel = transform.GetChild(0).gameObject;
+    }
+
+    private void Start()
+    {
+        kidsModeToggle.SetIsOnWithoutNotify(Map.kidsMode);
     }
 
     void Update()
@@ -19,6 +26,7 @@ public class Pause : MonoBehaviour
         {
             TriggerPause();
         }
+        kidsModeIndicator.SetActive(Map.kidsMode);
     }
     public void Restart()
     {
@@ -46,5 +54,10 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void SetKidsMode(bool enable)
+    {
+        Debug.Log("Kids mode: " + enable);
+        Map.kidsMode = enable;
     }
 }

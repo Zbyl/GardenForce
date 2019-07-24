@@ -22,7 +22,8 @@ public class CursorHandler : MonoBehaviour
 
     int lastTimeSeedReceive = 0;
 
-    public int parasiteSpawnDelay;  /// Delay between successive parasite spawns (in ticks).
+    public int parasiteSpawnDelay;      /// Delay between successive parasite spawns (in ticks).
+    public int kidsParasiteSpawnDelay;  /// Delay between successive parasite spawns for kids mode (in ticks).
     bool canSpawnParasite = false;
     int lastTimeParasiteReleased;  /// Last time a parasite was spawned.
     bool parasiteReleased = false;
@@ -101,7 +102,7 @@ public class CursorHandler : MonoBehaviour
 
         this.transform.position = map.mapPositionToWorldPosition(this.mapPosition, map.cursorZ);
 
-        if (map.isMineFieldNearby(mapPosition, playerNumber))
+        if (Map.kidsMode || map.isMineFieldNearby(mapPosition, playerNumber))
         {
             normalCursor.SetActive(true);
             forbiddenCursor.SetActive(false);
@@ -128,7 +129,7 @@ public class CursorHandler : MonoBehaviour
             lastTimeSeedReceive = currentTime;
         }
 
-        if (currentTime - lastTimeParasiteReleased > parasiteSpawnDelay)
+        if (currentTime - lastTimeParasiteReleased > (Map.kidsMode ? kidsParasiteSpawnDelay : parasiteSpawnDelay))
         {
             canSpawnParasite = true;
             lastTimeParasiteReleased = currentTime;
@@ -152,7 +153,10 @@ public class CursorHandler : MonoBehaviour
             //Debug.Log("Planted " + flowerPrefab.name + " for player " + playerNumber);
             particleBurst.Play();
             map.playRandomSound(flower.createSounds);
-            setSeedsNumber(seeds - 1);
+            if (!Map.kidsMode)
+            {
+                setSeedsNumber(seeds - 1);
+            }
         }
     }
 

@@ -4954,6 +4954,7 @@ MonoBehaviour:
   forbiddenCursor: {fileID: 4917979288140259810}
   ticksForSeed: 20
   parasiteSpawnDelay: 100
+  kidsParasiteSpawnDelay: 10
 --- !u!1 &2880946579235719669
 GameObject:
   m_ObjectHideFlags: 0

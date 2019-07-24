@@ -7,6 +7,8 @@ public class Map : MonoBehaviour
 {
     public static Map instance { get; private set; }
 
+    public static bool kidsMode = false;   ///< In kids mode you can plant everywhere (except on other plants), and there are no limits for seeds and parasites.
+
     public Camera camera;
 
     public GameObject playerOneGameObject;
@@ -257,7 +259,7 @@ public class Map : MonoBehaviour
 
     public Flower plantFlower(Vector2Int position, GameObject flowerPrefab, int owner)
     {
-        if (!isMineFieldNearby(position, owner))
+        if (!Map.kidsMode && !isMineFieldNearby(position, owner))
             return null;
 
         return instantiateFlower(position, flowerPrefab, owner);
@@ -335,7 +337,7 @@ public class Map : MonoBehaviour
 
     public Parasite createParasite(Vector2Int position, int owner)
     {
-        if (!isMineFieldHere(position, owner) && !isMineFieldNearby(position, owner))
+        if (!Map.kidsMode && !isMineFieldHere(position, owner) && !isMineFieldNearby(position, owner))
             return null;
 
         if (!isPositionInsideMap(position))
